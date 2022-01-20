@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TokenFunctions from './tokens/TokenFunctions';
 import GetBalance from './balance/GetBalance';
 
 function App() {
+
+  const [accessToken, setAccessToken] = useState('');
+
   return (
-    <TokenFunctions />
+    <>
+      <TokenFunctions setAccessToken={setAccessToken} />
+      {accessToken ? <GetBalance /> : null}
+    </>
   );
 }
 

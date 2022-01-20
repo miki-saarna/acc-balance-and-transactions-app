@@ -9,9 +9,9 @@ import {
     PlaidLinkOnSuccessMetadata,
 } from 'react-plaid-link';
 
-export default function TokenFunctions() {
+export default function TokenFunctions({ setAccessToken }:any) {
     const [linkToken, setLinkToken] = useState('');
-    const [accessToken, setAccessToken] = useState('');
+    // const [accessToken, setAccessToken] = useState('');
     
     useEffect(() => {
         const generateLinkTokenAPI = async () => {
@@ -22,7 +22,7 @@ export default function TokenFunctions() {
               });
         }
         generateLinkTokenAPI();
-    })
+    }, [])
 
     const PlaidLink: FunctionComponent<Props> = ({ token }) => {
         

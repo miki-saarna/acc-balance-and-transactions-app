@@ -26,16 +26,15 @@ export default function TokenFunctions() {
 
     const PlaidLink = ({ token }) => {
         
-        const onSuccess = useCallback(
+        const onSuccess = useCallback<PlaidLinkOnSuccess>(
             // const onSuccess = useCallback<PlaidLinkOnSuccess>(
-            async(public_token: string, metadata: PlaidLinkOnSuccessMetadata) => {
+            async (public_token: string, metadata: PlaidLinkOnSuccessMetadata) => {
                 await exchangeForAccessToken(public_token)
                   .then(async ({ access_token }) => {
                       console.log(access_token);
                       setAccessToken(access_token);
                   })
-            }
-        )
+            }, []);
 
         const config: PlaidLinkOptions = {
             onSuccess,

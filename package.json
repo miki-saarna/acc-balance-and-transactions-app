@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "plaid": "^9.10.0",
+    "typescript": "^4.5.4"
+  }
 }

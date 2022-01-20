@@ -1,19 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { getBalance } from '../utils/api';
+import { account } from '../utils/types';
 
 export default function GetBalance() {
-  // export default async function GetBalance() {
 
-    interface arrObj {
-      account_id: string,
-      balances: {
-        current: number
-      },
-      name: string
-    }
-  
-
-  const [accounts, setAccounts] = useState<arrObj[]>([]);
+  const [accounts, setAccounts] = useState<account[]>([]);
 
   useEffect(() => {
     const retrieveAccBalances = async () => {
@@ -26,7 +17,7 @@ export default function GetBalance() {
   }, [])
 
   
-  const listAccountsAndBalances = accounts.map(({ account_id, balances: { current }, name }:arrObj) => {
+  const listAccountsAndBalances:any = accounts.map(({ account_id, balances: { current }, name }:account) => {
     console.log(accounts);
       return (
         <li key={account_id}>{name}: ${(Math.round(current * 100) / 100).toFixed(2)}</li>

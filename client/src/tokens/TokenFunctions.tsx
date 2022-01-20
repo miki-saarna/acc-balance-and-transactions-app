@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, FunctionComponent } from 'react';
 import { generateLinkToken, exchangeForAccessToken, getBalance } from '../utils/api';
-import Props from '../utils/types';
+import { Props } from '../utils/types';
 
 import {
     usePlaidLink,

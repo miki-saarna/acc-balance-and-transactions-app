@@ -38,12 +38,14 @@ async function generateLinkToken(request, response, next) {
           language: 'en',
         };
         const createTokenResponse = await plaidClient.linkTokenCreate(configs);
-        // console.log(createTokenResponse)
         // prettyPrintResponse(createTokenResponse);
         response.json(createTokenResponse.data);
       })
       .catch(next);
 };
+
+// is this the best method for passing the value of a variable? Cannot use res.locals...
+let accessToken;
 
 // app.post('/api/set_access_token', function (request, response, next) {
 async function exchangeForAccessToken(request, response, next) {
@@ -51,7 +53,7 @@ async function exchangeForAccessToken(request, response, next) {
     const { public_token } = request.body;
     Promise.resolve()
       .then(async function () {
-        console.log(public_token)
+        // console.log(public_token)
         const tokenResponse = await plaidClient.itemPublicTokenExchange({
           public_token,
         });
@@ -66,8 +68,7 @@ async function exchangeForAccessToken(request, response, next) {
           item_id: ITEM_ID,
           error: null,
         });
-        console.log(ACCESS_TOKEN)
-        res.locals.accessToken = ACCESS_TOKEN;
+        accessToken = ACCESS_TOKEN;
       })
       .catch(next);
   };
@@ -76,7 +77,7 @@ async function exchangeForAccessToken(request, response, next) {
     Promise.resolve()
       .then(async function () {
         const balanceResponse = await plaidClient.accountsBalanceGet({
-          access_token: res.locals.accessToken,
+          access_token: accessToken,
         });
         // prettyPrintResponse(balanceResponse);
         response.json(balanceResponse.data);

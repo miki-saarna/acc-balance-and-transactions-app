@@ -17,7 +17,6 @@ export default function TokenFunctions({ setAccessToken }:any) {
         const generateLinkTokenAPI = async () => {
             await generateLinkToken()
               .then((token: string) => {
-                  console.log(token);
                   setLinkToken(token);
               });
         }
@@ -31,7 +30,6 @@ export default function TokenFunctions({ setAccessToken }:any) {
             async (public_token: string, metadata: PlaidLinkOnSuccessMetadata) => {
                 await exchangeForAccessToken(public_token)
                   .then(async ({ access_token }) => {
-                      console.log(access_token);
                       setAccessToken(access_token);
                   })
             }, []);

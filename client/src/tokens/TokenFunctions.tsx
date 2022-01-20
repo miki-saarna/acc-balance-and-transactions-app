@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, FunctionComponent } from 'react';
 import { generateLinkToken, exchangeForAccessToken, getBalance } from '../utils/api';
 import Props from '../utils/types';
 
@@ -24,7 +24,7 @@ export default function TokenFunctions() {
         generateLinkTokenAPI();
     })
 
-    const PlaidLink = ({ token }) => {
+    const PlaidLink: FunctionComponent<Props> = ({ token }) => {
         
         const onSuccess = useCallback<PlaidLinkOnSuccess>(
             // const onSuccess = useCallback<PlaidLinkOnSuccess>(

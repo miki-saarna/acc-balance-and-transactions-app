@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback, FunctionComponent } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { generateLinkToken, exchangeForAccessToken, getBalance } from '../utils/api';
-import { Props } from '../utils/types';
+import { Props, SetAccessTokenProp } from '../utils/types';
 
 import {
     usePlaidLink,
@@ -9,8 +9,9 @@ import {
     PlaidLinkOnSuccessMetadata,
 } from 'react-plaid-link';
 
-export default function TokenFunctions({ setAccessToken }:any) {
-    const [linkToken, setLinkToken] = useState('');
+
+export default function TokenFunctions({ setAccessToken }: SetAccessTokenProp): JSX.Element {
+    const [linkToken, setLinkToken] = useState<string>('');
     // const [accessToken, setAccessToken] = useState('');
     
     useEffect(() => {
@@ -23,7 +24,7 @@ export default function TokenFunctions({ setAccessToken }:any) {
         generateLinkTokenAPI();
     }, [])
 
-    const PlaidLink: FunctionComponent<Props> = ({ token }) => {
+    const PlaidLink: React.FC<Props> = ({ token }) => {
         
         const onSuccess = useCallback<PlaidLinkOnSuccess>(
             // const onSuccess = useCallback<PlaidLinkOnSuccess>(

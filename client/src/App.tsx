@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import TokenFunctions from './tokens/TokenFunctions';
 import GetBalance from './balance/GetBalance';
 
-function App() {
+function App(): JSX.Element {
 
-  const [accessToken, setAccessToken] = useState('');
+  const [accessToken, setAccessToken] = useState<string>('');
 
   return (
     <>

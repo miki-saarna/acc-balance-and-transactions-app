@@ -1,8 +1,8 @@
-
+import TokenFunctions from './tokens/TokenFunctions';
 
 function App() {
   return (
-    <h1>hello world!</h1>
+    <TokenFunction />
   );
 }
 

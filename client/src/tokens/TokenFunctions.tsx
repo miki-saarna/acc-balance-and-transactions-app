@@ -33,8 +33,6 @@ export default function TokenFunctions() {
                   .then(async ({ access_token }) => {
                       console.log(access_token);
                       setAccessToken(access_token);
-                      await getBalance()
-                        .then(console.log)
                   })
             }
         )

@@ -15,7 +15,7 @@ export default function TokenFunctions({ setAccessToken }: SetAccessTokenProp): 
     // const [accessToken, setAccessToken] = useState('');
     
     useEffect(() => {
-        const generateLinkTokenAPI = async () => {
+        const generateLinkTokenAPI = async (): Promise<void> => {
             await generateLinkToken()
               .then((token: string) => {
                   setLinkToken(token);
@@ -28,7 +28,7 @@ export default function TokenFunctions({ setAccessToken }: SetAccessTokenProp): 
         
         const onSuccess = useCallback<PlaidLinkOnSuccess>(
             // const onSuccess = useCallback<PlaidLinkOnSuccess>(
-            async (public_token: string, metadata: PlaidLinkOnSuccessMetadata) => {
+            async (public_token: string, metadata: PlaidLinkOnSuccessMetadata): Promise<void> => {
                 await exchangeForAccessToken(public_token)
                   .then(async ({ access_token }) => {
                       setAccessToken(access_token);

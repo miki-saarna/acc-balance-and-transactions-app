@@ -7,7 +7,7 @@ export default function GetBalance(): JSX.Element {
   const [accounts, setAccounts] = useState<[] | account[]>([]);
 
   useEffect(() => {
-    const retrieveAccBalances = async () => {
+    const retrieveAccBalances = async (): Promise<void> => {
       await getBalance()
         .then(({ accounts }) => {
           setAccounts(accounts);

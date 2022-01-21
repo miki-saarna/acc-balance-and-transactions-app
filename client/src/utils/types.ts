@@ -2,7 +2,7 @@ export interface Props {
     token: string;
 }
 
-export interface account {
+export interface Account {
     account_id: string,
     balances: {
       current: number
@@ -14,3 +14,14 @@ export interface account {
 export interface SetAccessTokenProp {
     setAccessToken: React.Dispatch<React.SetStateAction<string>>
   }
+
+export interface tokenExchangeProp {
+    access_token: string,
+    // should it be void?
+    error: null,
+    item_id: string
+}
+
+export interface AccountsProp {
+    accounts: Account[]
+}

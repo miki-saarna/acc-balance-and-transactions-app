@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { getBalance } from '../utils/api';
-import { account } from '../utils/types';
+import { Account, AccountsProp } from '../utils/types';
 
 export default function GetBalance(): JSX.Element {
 
-  const [accounts, setAccounts] = useState<[] | account[]>([]);
+  const [accounts, setAccounts] = useState<[] | Account[]>([]);
 
   useEffect(() => {
     const retrieveAccBalances = async (): Promise<void> => {
@@ -14,11 +14,9 @@ export default function GetBalance(): JSX.Element {
         });
     }
     retrieveAccBalances();
-  }, [])
-
+  }, []);
   
-  const listAccountsAndBalances: JSX.Element[] = accounts.map(({ account_id, balances: { current }, name }:account) => {
-    console.log(accounts);
+  const listAccountsAndBalances: JSX.Element[] = accounts.map(({ account_id, balances: { current }, name }: Account) => {
       return (
         <li key={account_id}>{name}: ${(Math.round(current * 100) / 100).toFixed(2)}</li>
       )

@@ -1,8 +1,9 @@
-const API_BASE_URL = "http://localhost:5000";
+import { tokenExchangeProp, AccountsProp } from "./types";
+const API_BASE_URL: string = "http://localhost:5000";
 const headers = new Headers();
 headers.append("Content-Type", "application/json");
 
-export const generateLinkToken: any = async () => {
+export const generateLinkToken = async (): Promise<string> => {
     
     const url: any = new URL(`${API_BASE_URL}/link/token/create`);
     // const url = new URL(`${API_BASE_URL}/api/create_link_token`);
@@ -16,7 +17,7 @@ export const generateLinkToken: any = async () => {
 }
 
 // adjust to use api endpoint found within documentation...
-export const exchangeForAccessToken = async (public_token: string) => {
+export const exchangeForAccessToken = async (public_token: string): Promise<tokenExchangeProp> => {
     const url: any = new URL(`${API_BASE_URL}/item/public_token/exchange`);
     // const url: any = new URL(`${API_BASE_URL}/api/set_access_token`);
     const response = await fetch(url, {
@@ -28,10 +29,11 @@ export const exchangeForAccessToken = async (public_token: string) => {
     })
     // console.log(JSON.stringify({data: public_token}))
     // what happens if await is removed?
+    // return await response.json();
     return await response.json();
 }
 
-export const getBalance = async () => {
+export const getBalance = async (): Promise<AccountsProp> => {
     // export const getBalance = async (access_token: string) => {
     const url: any = new URL(`${API_BASE_URL}/api/balance`);
     const response = await fetch(url, {

@@ -19,5 +19,4 @@ app.use(express.json());
 
 app.use('/', routesRouter);
 
-
 module.exports = app;

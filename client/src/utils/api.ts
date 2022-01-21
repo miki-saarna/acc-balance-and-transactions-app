@@ -1,5 +1,5 @@
 import { tokenExchangeProp, AccountsProp } from "./types";
-const API_BASE_URL: string = "http://localhost:5000";
+const API_BASE_URL: string = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
 const headers = new Headers();
 headers.append("Content-Type", "application/json");
 

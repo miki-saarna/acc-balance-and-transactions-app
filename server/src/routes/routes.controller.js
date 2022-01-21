@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const {
     PORT,
     PLAID_CLIENT_ID,
@@ -24,7 +26,6 @@ const configuration = new Configuration({
 const plaidClient = new PlaidApi(configuration);
 
 async function generateLinkToken(request, response, next) {
-    
     Promise.resolve()
       .then(async function () {
         const configs = {
@@ -45,12 +46,15 @@ async function generateLinkToken(request, response, next) {
 };
 
 // is this the best method for passing the value of a variable? Cannot use res.locals...
-let accessToken;
+// let accessToken = 'access-sandbox-fe3ae64f-458c-4ab0-b08e-722f282318c4';
+let accessToken = 'access-sandbox-63995ef0-cad8-40da-ae6c-a30f542a02f5';
+
 
 // app.post('/api/set_access_token', function (request, response, next) {
 async function exchangeForAccessToken(request, response, next) {
     // unsure where this comes from
     const { public_token } = request.body;
+    console.log(public_token)
     Promise.resolve()
       .then(async function () {
         // console.log(public_token)

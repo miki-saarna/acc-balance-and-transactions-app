@@ -31,6 +31,7 @@ export default function TokenFunctions({ setAccessToken }: SetAccessTokenProp): 
             async (public_token: string, metadata: PlaidLinkOnSuccessMetadata): Promise<void> => {
                 await exchangeForAccessToken(public_token)
                   .then(async ({ access_token }) => {
+                    console.log(access_token)
                       setAccessToken(access_token);
                   })
             }, []);

@@ -13,26 +13,20 @@ export default function GetTransactions(): JSX.Element {
 
     const transactionsRows = transactionsData.map((transaction: TransactionProp) => {
         const {
+            transaction_id,
             date,
             merchant_name,
             name,
             amount
         } = transaction;
 
-        const validValues = ['date', 'merchant_name', 'name', 'transaction'];
-
-        transactionsData.forEach((entry) => {
-            if (validValues.includes(entry.toString())) {
-                return <td>{entry}</td>
-            }
-        })
 
         return (
-            <tr>
+            <tr key={transaction_id}>
                 <td>{date}</td>
                 <td>{merchant_name}</td>
                 <td>{name}</td>
-                <td>{amount}</td>
+                <td>${amount.toFixed(2)}</td>
             </tr>
         )
     })

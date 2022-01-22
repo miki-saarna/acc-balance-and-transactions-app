@@ -45,8 +45,9 @@ export interface Empty {
 }
 
 export interface TransactionProp {
+    transaction_id: string,
     date: Date,
-    merchant_name: String,
-    name: String,
-    amount: Number
+    merchant_name: string,
+    name: string,
+    amount: number
 }

@@ -116,8 +116,7 @@ async function getTransactions(req, res, next) {
         start_date: '2018-01-01',
         end_date: '2020-02-01',
         options: {
-          offset: 20,
-          // offset: transactions.length,
+          offset: transactions.length,
         },
       };
       const paginatedResponse = await plaidClient.transactionsGet(paginatedRequest);

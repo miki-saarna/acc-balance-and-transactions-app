@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const cors = require('cors');
 const routesRouter = require('./routes/routes.router');
+const accessTokenRouter = require('./tokenStorage/accessToken.router');
 
 app.use(cors());
 // CORS API access approval to requesting domain below
@@ -18,5 +19,6 @@ app.use(function(req, res, next) {
 app.use(express.json());
 
 app.use('/', routesRouter);
+app.use('/accessToken', accessTokenRouter);
 
 module.exports = app;

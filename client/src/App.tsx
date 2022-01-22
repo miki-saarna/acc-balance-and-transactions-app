@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Route, Link } from 'react-router-dom';
 import TokenFunctions from './tokens/TokenFunctions';
 import AccessTokenDB from './tokens/AccessTokenDB';
 import GetBalance from './money/GetBalance';
 import GetTransactions from './money/GetTransactions';
+import Menu from './layout/Menu';
 import { AccessTokenObjProp } from './utils/types';
 
 function App(): JSX.Element {
@@ -26,6 +28,7 @@ function App(): JSX.Element {
 
   return (
     <>
+      <Menu />
       <TokenFunctions setAccessTokenObj={setAccessTokenObj} /> 
       {accessTokenObj ? <GetBalance /> : null}
       {accessTokenObj ? <GetTransactions /> : null}

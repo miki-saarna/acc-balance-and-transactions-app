@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-// const { getTransactions } = require('../utils/api');
+import React, { useState } from 'react';
 import { getTransactions } from '../utils/api';
 import { TransactionProp } from '../utils/types'
 

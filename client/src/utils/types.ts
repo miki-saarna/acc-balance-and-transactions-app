@@ -15,6 +15,10 @@ export interface SetAccessTokenProp {
     setAccessToken: React.Dispatch<React.SetStateAction<string>>
   }
 
+export interface SetAccessTokenObjProp {
+  setAccessTokenObj: React.Dispatch<React.SetStateAction<AccessTokenObjProp>>
+}
+
 export interface tokenExchangeProp {
     access_token: string,
     // should it be void?
@@ -24,4 +28,18 @@ export interface tokenExchangeProp {
 
 export interface AccountsProp {
     accounts: Account[]
+}
+
+export interface AccessTokenProp {
+    access_token: string,
+}
+
+export interface AccessTokenObjProp {
+    access_token: string,
+    item_id: string,
+    error: string | null
+}
+
+export interface Empty {
+
 }

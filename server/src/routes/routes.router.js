@@ -15,6 +15,7 @@ async function getToken(req, res, next) {
     } catch (err) {
         return res.status(500).json({ message: err.message })
     }
+    // use res.locals.tokenFound?
     res.tokenFound = tokenFound
     next()
 }

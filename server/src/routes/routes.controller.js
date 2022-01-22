@@ -1,4 +1,5 @@
 require("dotenv").config();
+const AccessToken = require('../mongoDB/accessTokenSchema');
 
 const {
     PORT,
@@ -47,14 +48,14 @@ async function generateLinkToken(request, response, next) {
 
 // is this the best method for passing the value of a variable? Cannot use res.locals...
 // let accessToken = 'access-sandbox-fe3ae64f-458c-4ab0-b08e-722f282318c4';
-let accessToken = 'access-sandbox-63995ef0-cad8-40da-ae6c-a30f542a02f5';
+// let accessToken = 'access-sandbox-63995ef0-cad8-40da-ae6c-a30f542a02f5';
 
 
 // app.post('/api/set_access_token', function (request, response, next) {
 async function exchangeForAccessToken(request, response, next) {
     // unsure where this comes from
     const { public_token } = request.body;
-    console.log(public_token)
+    // console.log(public_token)
     Promise.resolve()
       .then(async function () {
         // console.log(public_token)
@@ -72,12 +73,14 @@ async function exchangeForAccessToken(request, response, next) {
           item_id: ITEM_ID,
           error: null,
         });
-        accessToken = ACCESS_TOKEN;
+        process.env.ACCESS_TOKEN = ACCESS_TOKEN;
+        // accessToken = ACCESS_TOKEN;
       })
       .catch(next);
   };
 
   async function getBalance(request, response, next) {
+    const accessToken = process.env.ACCESS_TOKEN
     Promise.resolve()
       .then(async function () {
         const balanceResponse = await plaidClient.accountsBalanceGet({

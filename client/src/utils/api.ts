@@ -41,7 +41,21 @@ export const getBalance = async (): Promise<AccountsProp> => {
         headers: {
             'Content-Type': 'application/json',
         },
-        // body: JSON.stringify({access_token}),  
+    })
+    return await response.json();
+}
+
+export const storeAccessToken = async (access_token: string, item_id: string) => {
+    const url: any = new URL(`${API_BASE_URL}/accessToken/storage`);
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            access_token,
+            item_id
+        })
     })
     return await response.json();
 }

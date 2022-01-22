@@ -43,3 +43,10 @@ export interface AccessTokenObjProp {
 export interface Empty {
 
 }
+
+export interface TransactionProp {
+    date: Date,
+    merchant_name: String,
+    name: String,
+    amount: Number
+}

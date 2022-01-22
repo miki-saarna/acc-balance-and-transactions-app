@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import TokenFunctions from './tokens/TokenFunctions';
 import AccessTokenDB from './tokens/AccessTokenDB';
-import GetBalance from './balance/GetBalance';
-import { AccessTokenObjProp, Empty } from './utils/types';
+import GetBalance from './money/GetBalance';
+import GetTransactions from './money/GetTransactions';
+import { AccessTokenObjProp } from './utils/types';
 
 function App(): JSX.Element {
 
   const [accessTokenObj, setAccessTokenObj] = useState<AccessTokenObjProp | any>('');
 
-  
+  useEffect(() => {
 
+  }, [])
+
+  // saves access_token to database
   useEffect(() => {
     if (accessTokenObj) {
       const {
@@ -24,6 +28,7 @@ function App(): JSX.Element {
     <>
       <TokenFunctions setAccessTokenObj={setAccessTokenObj} /> 
       {accessTokenObj ? <GetBalance /> : null}
+      {accessTokenObj ? <GetTransactions /> : null}
     </>
   );
 }

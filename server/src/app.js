@@ -2,7 +2,7 @@ const path = require("path");
 const express = require("express");
 const app = express();
 const cors = require('cors');
-const routesRouter = require('./routes/routes.router');
+const plaidAPIRouter = require('./plaidAPI/plaidAPI.router');
 const accessTokenRouter = require('./tokenStorage/accessToken.router');
 
 app.use(cors());
@@ -18,7 +18,7 @@ app.use(function(req, res, next) {
 });
 app.use(express.json());
 
-app.use('/', routesRouter);
+app.use('/', plaidAPIRouter);
 app.use('/accessToken', accessTokenRouter);
 
 module.exports = app;

@@ -23,7 +23,8 @@ async function list(req, res) {
     }
 }
 
-async function storeToken(req, res) {
+// create token document? within database
+async function create(req, res) {
     const {
         access_token,
         item_id
@@ -70,8 +71,8 @@ async function destroy(req, res) {
 }
 
 module.exports = {
-    storeToken,
     list,
+    create,
     read: [getToken, read],
     update: [getToken, update],
     destroy: [getToken, destroy],

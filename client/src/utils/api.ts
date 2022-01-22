@@ -59,3 +59,15 @@ export const storeAccessToken = async (access_token: string, item_id: string) =>
     })
     return await response.json();
 }
+
+export const getTransactions = async () => {
+    // const url: string = `${API_BASE_URL}/transactions/get`
+    const url: any = new URL(`${API_BASE_URL}/transactions/get`);
+    const options = {
+        method: "GET",
+        headers,
+        body: null
+    }
+    const response = await fetch(url, options);
+    return response.json();
+}

@@ -4,6 +4,7 @@ import TokenFunctions from '../tokens/TokenFunctions';
 import AccessTokenDB from '../tokens/AccessTokenDB';
 import GetBalance from '../money/GetBalance';
 import GetTransactions from '../money/GetTransactions';
+import { getBalance } from '../utils/api';
 import { AccessTokenObj, Account } from '../utils/types';
 
 // function Routes() {
@@ -20,6 +21,8 @@ function Routing(): ReactElement {
         item_id
       } = accessTokenObj;
       AccessTokenDB(access_token, item_id);
+      getBalance()
+        .then(({ accounts }) => setAccounts(accounts));
     }
   }, [accessTokenObj])
 

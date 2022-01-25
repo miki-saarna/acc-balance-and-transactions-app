@@ -6,7 +6,7 @@ export default function Menu(): JSX.Element {
         <nav>
             <ul>
                 <li>
-                  <Link to="/home">
+                  <Link to="/">
                     Home
                   </Link>
                 </li>

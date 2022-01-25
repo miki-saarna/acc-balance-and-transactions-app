@@ -50,5 +50,6 @@ export interface TransactionProp {
     date: Date,
     merchant_name: string,
     name: string,
+    category: [],
     amount: number
 }

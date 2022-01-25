@@ -1,7 +1,3 @@
-export interface Props {
-    token: string;
-}
-
 export interface Account {
     account_id: string,
     balances: {
@@ -11,45 +7,29 @@ export interface Account {
     name: string
 }
 
-export interface SetAccessTokenProp {
-    setAccessToken: React.Dispatch<React.SetStateAction<string>>
-  }
-
-export interface SetAccessTokenObjProp {
-  setAccessTokenObj: React.Dispatch<React.SetStateAction<AccessTokenObjProp>>
+export interface AccountsStateProp {
+    accounts: Account[],
+    setAccounts: React.Dispatch<React.SetStateAction<Account[]>>
 }
 
-export interface tokenExchangeProp {
-    access_token: string,
-    // should it be void?
-    error: null,
-    item_id: string
-}
-
-export interface AccountsProp {
-    accounts: Account[]
-}
-
-export interface AccessTokenProp {
-    access_token: string,
-}
-
-export interface AccessTokenObjProp {
+export interface AccessTokenObj {
     access_token: string,
     item_id: string,
     error: string | null
 }
 
-export interface Empty {
-
+export interface SetAccessTokenObj {
+  setAccessTokenObj: React.Dispatch<React.SetStateAction<AccessTokenObj>>
 }
 
-export interface TransactionProp {
+export interface Transaction {
     account_id: string,
     transaction_id: string,
     date: Date,
     merchant_name: string,
     name: string,
-    category: [],
+    category: Array<string>,
+    // alternative way:
+    // category: string[],
     amount: number
 }

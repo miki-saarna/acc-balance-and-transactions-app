@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { ReactElement, useState, useEffect } from 'react';
 import { getBalance } from '../utils/api';
-import { Account, AccountsProp } from '../utils/types';
+import { Account, AccountsStateProp } from '../utils/types';
 
-export default function GetBalance({ accounts, setAccounts }: any): JSX.Element {
-
-  // const [accounts, setAccounts] = useState<[] | Account[]>([]);
+export default function GetBalance({ accounts, setAccounts }: AccountsStateProp): ReactElement {
 
   useEffect(() => {
-    // can this async/await be removed? Potentially only need the then
-    const retrieveAccBalances = async (): Promise<void> => {
-      await getBalance()
-        .then(({ accounts }) => {
-          setAccounts(accounts);
-        });
-    }
-    retrieveAccBalances();
+    // immediately invoked function expression (IIFE)
+    // (async () => await getBalance()
+    //     .then(({ accounts }) => 
+    //       setAccounts(accounts)
+    //     )
+    // )()
+    getBalance()
+      .then(({ accounts }) => {
+        setAccounts(accounts)
+      })
   }, []);
   
-  const listAccountsAndBalances: JSX.Element[] = accounts.map(({ account_id, balances: { current }, name }: Account) => {
+  const listAccountsAndBalances: React.ReactNode[] = accounts.map(({ account_id, balances: { current }, name }: Account) => {
       return (
         <li key={account_id}>{name}: ${(Math.round(current * 100) / 100).toFixed(2)} and {account_id}</li>
       )

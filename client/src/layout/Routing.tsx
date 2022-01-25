@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import React, { ReactElement, useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import TokenFunctions from '../tokens/TokenFunctions';
 import AccessTokenDB from '../tokens/AccessTokenDB';
 import GetBalance from '../money/GetBalance';
 import GetTransactions from '../money/GetTransactions';
-import Menu from './Menu';
-import { AccessTokenObjProp, Account } from '../utils/types';
+import { AccessTokenObj, Account } from '../utils/types';
 
 // function Routes() {
-function Routing(): JSX.Element {
+function Routing(): ReactElement {
 
-  const [accessTokenObj, setAccessTokenObj] = useState<AccessTokenObjProp | any>('');
+  const [accessTokenObj, setAccessTokenObj] = useState<AccessTokenObj>({} as AccessTokenObj);
   const [accounts, setAccounts] = useState<[] | Account[]>([]);
 
   // saves access_token to database
   useEffect(() => {
-    if (accessTokenObj) {
+    if (Object.entries(accessTokenObj).length) {
       const {
         access_token,
         item_id

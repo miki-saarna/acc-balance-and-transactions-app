@@ -1,10 +1,15 @@
 import React, { ReactElement, useState, useEffect } from 'react';
-import { getTransactions } from '../utils/api';
-import { Transaction, Account } from '../utils/types'
+// import { getTransactions } from '../utils/api';
+import { Transaction, Account } from '../utils/types';
 
-export default function GetTransactions({ accounts }): ReactElement {
+interface Prop {
+    transactions: Transaction[],
+    accounts: Account[],
+}
 
-    const [transactionsData, setTransactionsData] = useState<Transaction[]>([]);
+export default function DisplayTransactions({ transactions, accounts }: Prop): ReactElement {
+
+    // const [transactionsData, setTransactionsData] = useState<Transaction[]>([]);
     
     // can I use Promise.resolve???
     // Promise.resolve()
@@ -12,14 +17,13 @@ export default function GetTransactions({ accounts }): ReactElement {
     // getTransactions()
     //     .then(setTransactionsData)
 
-    useEffect(() => {
-          getTransactions()
-            .then(setTransactionsData)
-    }, []);
+    // useEffect(() => {
+    //       getTransactions()
+    //         .then(setTransactionsData)
+    // }, []);
     
-    
-        
-        const transactionsRows = transactionsData.map((transaction: Transaction) => {
+    // const [transactionsRow, setTransactionsRow] = useState([]);
+        const transactionsRows = transactions.map((transaction: Transaction) => {
             const {
                 account_id,
                 transaction_id,
@@ -30,13 +34,14 @@ export default function GetTransactions({ accounts }): ReactElement {
                 amount
             } = transaction;
             
-            const accountFound = accounts.find((account: Account) => {
+            // should always find account - is there a way to remove the undefined?
+            const accountFound: Account | undefined = accounts.find((account: Account) => {
                 return account.account_id === account_id
             })
             
             return (
                 <tr key={transaction_id}>
-                    <td>{accountFound.name}</td>
+                    <td>{accountFound ? accountFound.name : null}</td>
                     <td>{date}</td>
                     <td>{merchant_name}</td>
                     <td>{name}</td>

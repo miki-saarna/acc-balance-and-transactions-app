@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import TokenFunctions from '../tokens/TokenFunctions';
 import AccessTokenDB from '../tokens/AccessTokenDB';
 import DisplayBalances from '../money/DisplayBalances';
-import GetTransactions from '../money/GetTransactions';
+import DisplayTransactions from '../money/DisplayTransactions';
 import { getBalance, getTransactions } from '../utils/api';
 import { AccessTokenObj, Account, Transaction } from '../utils/types';
 
@@ -34,7 +34,7 @@ function Routing(): ReactElement {
       <Routes>
         <Route path='/' element={<TokenFunctions setAccessTokenObj={setAccessTokenObj} /> }/>
         <Route path='/balances' element={accounts.length ? <DisplayBalances accounts={accounts} /> : null}/>
-        <Route path='/transactions' element={transactions.length ? <GetTransactions transactions={transactions} accounts={accounts} /> : null}/>
+        <Route path='/transactions' element={transactions.length ? <DisplayTransactions transactions={transactions} accounts={accounts} /> : null}/>
       </Routes>
     </>
   );

@@ -1,5 +1,5 @@
 import React, { ReactElement, useState, useEffect } from 'react';
-import { getTransactions } from '../utils/api';
+// import { getTransactions } from '../utils/api';
 import { Transaction, Account } from '../utils/types';
 
 interface Prop {
@@ -7,7 +7,7 @@ interface Prop {
     accounts: Account[],
 }
 
-export default function GetTransactions({ transactions, accounts }: Prop): ReactElement {
+export default function DisplayTransactions({ transactions, accounts }: Prop): ReactElement {
 
     // const [transactionsData, setTransactionsData] = useState<Transaction[]>([]);
     

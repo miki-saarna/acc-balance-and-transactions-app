@@ -63,10 +63,10 @@ export default function GetTransactions({ accounts }): JSX.Element {
                         name
                     </th>
                     <th>
-                        amount
+                        category
                     </th>
                     <th>
-                        category
+                        amount
                     </th>
                 </tr>
             </thead>

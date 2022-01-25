@@ -34,14 +34,14 @@ export default function DisplayTransactions({ transactions, accounts }: Prop): R
                 amount
             } = transaction;
             
-            const accountFound: any = accounts.find((account: Account) => {
+            // should always find account - is there a way to remove the undefined?
+            const accountFound: Account | undefined = accounts.find((account: Account) => {
                 return account.account_id === account_id
             })
             
-            
             return (
                 <tr key={transaction_id}>
-                    <td>{accountFound.name}</td>
+                    <td>{accountFound ? accountFound.name : null}</td>
                     <td>{date}</td>
                     <td>{merchant_name}</td>
                     <td>{name}</td>

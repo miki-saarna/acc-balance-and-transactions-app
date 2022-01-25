@@ -95,8 +95,8 @@ async function exchangeForAccessToken(request, response, next) {
   };
 
 async function getTransactions(req, res, next) {
-  // const accessToken = process.env.ACCESS_TOKEN
-  const accessToken = "access-sandbox-1521a18a-e3fe-43df-bca7-e901305ea874";
+  const accessToken = process.env.ACCESS_TOKEN
+  // const accessToken = "access-sandbox-1521a18a-e3fe-43df-bca7-e901305ea874";
   const request = {
     // const request: TransactionsGetRequest = {
     access_token: accessToken,

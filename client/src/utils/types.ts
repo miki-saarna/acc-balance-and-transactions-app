@@ -45,6 +45,7 @@ export interface Empty {
 }
 
 export interface TransactionProp {
+    account_id: string,
     transaction_id: string,
     date: Date,
     merchant_name: string,

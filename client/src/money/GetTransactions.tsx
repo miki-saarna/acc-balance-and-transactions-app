@@ -26,6 +26,7 @@ export default function GetTransactions({ accounts }): JSX.Element {
                 date,
                 merchant_name,
                 name,
+                category,
                 amount
             } = transaction;
             
@@ -39,6 +40,7 @@ export default function GetTransactions({ accounts }): JSX.Element {
                     <td>{date}</td>
                     <td>{merchant_name}</td>
                     <td>{name}</td>
+                    <td>{category.join(', ')}</td>
                 <td>${amount.toFixed(2)}</td>
             </tr>
         )
@@ -62,6 +64,9 @@ export default function GetTransactions({ accounts }): JSX.Element {
                     </th>
                     <th>
                         amount
+                    </th>
+                    <th>
+                        category
                     </th>
                 </tr>
             </thead>

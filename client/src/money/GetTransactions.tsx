@@ -2,9 +2,9 @@ import React, { ReactElement, useState, useEffect } from 'react';
 import { getTransactions } from '../utils/api';
 import { Transaction, Account } from '../utils/types'
 
-export default function GetTransactions({ accounts }): ReactElement {
+export default function GetTransactions({ transactions, accounts }): ReactElement {
 
-    const [transactionsData, setTransactionsData] = useState<Transaction[]>([]);
+    // const [transactionsData, setTransactionsData] = useState<Transaction[]>([]);
     
     // can I use Promise.resolve???
     // Promise.resolve()
@@ -12,14 +12,14 @@ export default function GetTransactions({ accounts }): ReactElement {
     // getTransactions()
     //     .then(setTransactionsData)
 
-    useEffect(() => {
-          getTransactions()
-            .then(setTransactionsData)
-    }, []);
+    // useEffect(() => {
+    //       getTransactions()
+    //         .then(setTransactionsData)
+    // }, []);
     
     
         
-        const transactionsRows = transactionsData.map((transaction: Transaction) => {
+        const transactionsRows = transactions.map((transaction: Transaction) => {
             const {
                 account_id,
                 transaction_id,

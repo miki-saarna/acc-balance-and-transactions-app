@@ -5,16 +5,13 @@ import AccessTokenDB from '../tokens/AccessTokenDB';
 import GetBalance from '../money/GetBalance';
 import GetTransactions from '../money/GetTransactions';
 import Menu from './Menu';
-import { AccessTokenObjProp } from '../utils/types';
+import { AccessTokenObjProp, Account } from '../utils/types';
 
 // function Routes() {
 function Routing(): JSX.Element {
 
   const [accessTokenObj, setAccessTokenObj] = useState<AccessTokenObjProp | any>('');
-
-  useEffect(() => {
-
-  }, [])
+  const [accounts, setAccounts] = useState<[] | Account[]>([]);
 
   // saves access_token to database
   useEffect(() => {
@@ -31,8 +28,8 @@ function Routing(): JSX.Element {
     <>
       <Routes>
         <Route path='/' element={<TokenFunctions setAccessTokenObj={setAccessTokenObj} /> }/>
-        <Route path='/balances' element={accessTokenObj ? <GetBalance /> : null}/>
-        <Route path='/transactions' element={accessTokenObj ? <GetTransactions /> : null}/>
+        <Route path='/balances' element={accessTokenObj ? <GetBalance accounts={accounts} setAccounts={setAccounts} /> : null}/>
+        <Route path='/transactions' element={accessTokenObj ? <GetTransactions accounts={accounts} /> : null}/>
       </Routes>
     </>
   );

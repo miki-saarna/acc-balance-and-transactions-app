@@ -7,10 +7,11 @@ export interface Account {
     name: string
 }
 
-export interface AccountsStateProp {
-    accounts: Account[],
-    setAccounts: React.Dispatch<React.SetStateAction<Account[]>>
-}
+// potentially delete?
+// export interface AccountsStateProp {
+//     accounts: Account[],
+//     setAccounts: React.Dispatch<React.SetStateAction<Account[]>>
+// }
 
 export interface AccessTokenObj {
     access_token: string,
@@ -33,3 +34,8 @@ export interface Transaction {
     // category: string[],
     amount: number
 }
+
+// export interface transactionsAndAccountsProp {
+//     transactions: Transaction[],
+//     accounts: Account[],
+// }

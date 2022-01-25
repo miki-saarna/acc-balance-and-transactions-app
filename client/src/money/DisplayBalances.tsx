@@ -1,8 +1,7 @@
 import React, { ReactElement, useState, useEffect } from 'react';
-import { getBalance } from '../utils/api';
-import { Account, AccountsStateProp } from '../utils/types';
+import { Account } from '../utils/types';
 
-export default function GetBalance({ accounts, setAccounts }: AccountsStateProp): ReactElement {
+export default function DisplayBalances({ accounts }: { accounts: Account[] }): ReactElement {
 
   // useEffect(() => {
   //   // immediately invoked function expression (IIFE)

@@ -44,6 +44,7 @@ useEffect(() => {
   if (accounts.length) {
     getTransactions(abortController.signal)
       .then(setTransactions)
+      .catch((error) => console.error(error))
   }
   return () => abortController.abort();
 }, [accounts])

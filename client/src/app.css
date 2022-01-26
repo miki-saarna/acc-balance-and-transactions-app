@@ -125,14 +125,17 @@ th:last-of-type, td:last-of-type {
         flex-direction: row;
     }
 
+    header {
+        padding: 0 2%;
+    }
+
     header h1 {
-        margin: 0 0 0 10px;
+        margin-top: 0;
     }
 
     nav ul {
         justify-content: flex-end;
         height: 70px;
-        margin-right: 10px;
     }
 }
 

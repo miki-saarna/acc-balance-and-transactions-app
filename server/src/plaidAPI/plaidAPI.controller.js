@@ -92,8 +92,8 @@ async function exchangeForAccessToken(request, response, next) {
   };
 
 async function getTransactions(req, res, next) {
+  // move timezone adjustment to own file or use Moment package:
   const accessToken = process.env.ACCESS_TOKEN;
-  // const accessToken = "access-sandbox-1521a18a-e3fe-43df-bca7-e901305ea874";
   const currentDateArray = new Date().toLocaleString().split(',')[0].split('/');
   const currentDate = [currentDateArray[2], `0${currentDateArray[0]}`, currentDateArray[1]].join('-');
   const thirtyDaysInMS = 1000 * 60 * 60 * 24 * 30;

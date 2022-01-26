@@ -19,7 +19,8 @@ export default function TokenFunctions({ setAccessTokenObj }: SetAccessTokenObj)
             await generateLinkToken(abortController.signal)
               .then((token: string) => {
                   setLinkToken(token);
-              });
+              })
+              .catch((error) => console.error(error))
         }
         generateLinkTokenAPI();
         return () => abortController.abort();
@@ -36,6 +37,7 @@ export default function TokenFunctions({ setAccessTokenObj }: SetAccessTokenObj)
                     // console.log(access_token)
                       setAccessTokenObj(accessTokenObj);
                   })
+                  .catch((error) => console.error(error))
               return () => abortController.abort();
             }, []);
 

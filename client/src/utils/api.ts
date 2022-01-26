@@ -3,21 +3,21 @@ const API_BASE_URL: string = process.env.REACT_APP_API_BASE_URL || "http://local
 const headers = new Headers();
 headers.append("Content-Type", "application/json");
 
-export const generateLinkToken = async (): Promise<string> => {
+export const generateLinkToken = async (signal): Promise<string> => {
     
     const url: any = new URL(`${API_BASE_URL}/link/token/create`);
     // const url = new URL(`${API_BASE_URL}/api/create_link_token`);
     const response = await fetch(url, {
         method: "POST",
         headers,
-
+        signal
     });
     const { link_token: linkToken } = await response.json();
     return linkToken;
 }
 
 // adjust to use api endpoint found within documentation...
-export const exchangeForAccessToken = async (public_token: string): Promise<AccessTokenObj> => {
+export const exchangeForAccessToken = async (public_token: string, signal): Promise<AccessTokenObj> => {
     const url: any = new URL(`${API_BASE_URL}/item/public_token/exchange`);
     // const url: any = new URL(`${API_BASE_URL}/api/set_access_token`);
     const response = await fetch(url, {
@@ -26,6 +26,7 @@ export const exchangeForAccessToken = async (public_token: string): Promise<Acce
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({public_token}),
+        signal
     })
     // console.log(JSON.stringify({data: public_token}))
     // what happens if await is removed?

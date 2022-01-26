@@ -1,4 +1,5 @@
 const AccessToken = require('../mongoDB/accessTokenSchema');
+const asyncErrorBoundary = require('../errors/asyncErrorBoundary');
 
 async function getToken(req, res, next) {
     try {
@@ -71,9 +72,9 @@ async function destroy(req, res) {
 }
 
 module.exports = {
-    list,
-    create,
-    read: [getToken, read],
-    update: [getToken, update],
-    destroy: [getToken, destroy],
+    list: asyncErrorBoundary(list),
+    create: asyncErrorBoundary(create),
+    read: [asyncErrorBoundary(getToken), read],
+    update: [asyncErrorBoundary(getToken), asyncErrorBoundary(update)],
+    destroy: [asyncErrorBoundary(getToken), asyncErrorBoundary(destroy)],
 }

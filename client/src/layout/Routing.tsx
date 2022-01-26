@@ -30,7 +30,8 @@ function Routing(): ReactElement {
           // setTransactions(response[1]);
         // })
       getBalance(abortController.signal)
-        .then(({ accounts }) => setAccounts(accounts));
+        .then(({ accounts }) => setAccounts(accounts))
+        .catch((error) => console.error(error))
       // getTransactions(abortController.signal)
       //   .then(setTransactions)
   }

@@ -5,6 +5,10 @@
     font-family: 'SF Pro', 'Produc Sans', helvetica, sans-serif;
 }
 
+.no-wrap {
+    white-space: nowrap;
+}
+
 nav {
     width: 100vw;
     background-color: #333333;
@@ -35,8 +39,19 @@ main {
     margin: 40px;
 }
 
-.no-wrap {
-    white-space: nowrap;
+button {
+    padding: 9px 15px;
+    border: none;
+    border-radius: 7px;
+    background-color: rgba(1, 1, 1, .8);
+    color: white;
+}
+
+button:hover {
+    background-color:  rgb(36, 204, 133);;
+    color: #f3f3f3;
+    transform: translateY(-1px);
+    transition-duration: .3s;
 }
 
 ul {

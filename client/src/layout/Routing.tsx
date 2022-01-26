@@ -6,6 +6,7 @@ import DisplayBalances from '../money/DisplayBalances';
 import DisplayTransactions from '../money/DisplayTransactions';
 import { getBalance, getTransactions } from '../utils/api';
 import { AccessTokenObj, Account, Transaction } from '../utils/types';
+import Reconnect from '../utils/Reconnect';
 
 // function Routes() {
 function Routing(): ReactElement {
@@ -55,6 +56,7 @@ useEffect(() => {
         <Route path='/' element={<TokenFunctions setAccessTokenObj={setAccessTokenObj} /> }/>
         <Route path='/balances' element={accounts.length ? <DisplayBalances accounts={accounts} /> : null}/>
         <Route path='/transactions' element={transactions.length ? <DisplayTransactions transactions={transactions} accounts={accounts} /> : null}/>
+        <Route path='/reconnect' element={<Reconnect />} />
       </Routes>
     </>
   );

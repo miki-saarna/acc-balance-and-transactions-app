@@ -20,6 +20,11 @@ export default function Menu(): ReactElement {
                     View Transactions
                   </Link>
                 </li>
+                <li>
+                  <Link to="/reconnect">
+                    Reconnect
+                  </Link>
+                </li>
             </ul>
         </nav>
     )

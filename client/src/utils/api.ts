@@ -74,3 +74,14 @@ export const getTransactions = async (signal): Promise<Transaction[]> => {
     const response = await fetch(url, options);
     return response.json();
 }
+
+export const reconnect = async() => {
+    const url: any = new URL(`${API_BASE_URL}/link/token/create`);
+    // const url = new URL(`${API_BASE_URL}/api/create_link_token`);
+    const response = await fetch(url, {
+        method: "POST",
+        headers,
+    });
+    const { link_token: linkToken } = await response.json();
+    return linkToken;
+}

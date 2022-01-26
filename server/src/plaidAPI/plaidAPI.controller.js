@@ -29,9 +29,45 @@ const configuration = new Configuration({
 
 const plaidClient = new PlaidApi(configuration);
 
+// async function generateLinkToken(request, response, next) {
+//     Promise.resolve()
+//       .then(async function () {
+//         const configs = {
+//           user: {
+//             // This should correspond to a unique id for the current user.
+//             client_user_id: 'user-id',
+//           },
+//           client_name: 'Plaid Quickstart',
+//           products: PLAID_PRODUCTS.split(','),
+//           country_codes: PLAID_COUNTRY_CODES.split(','),
+//           language: 'en',
+//         };
+//         const createTokenResponse = await plaidClient.linkTokenCreate(configs);
+//         // prettyPrintResponse(createTokenResponse);
+//         response.json(createTokenResponse.data);
+//       })
+//       .catch(next);
+// };
+
 async function generateLinkToken(request, response, next) {
-    Promise.resolve()
-      .then(async function () {
+  Promise.resolve()
+    .then(async function () {
+      if (process.env.PORT) {
+        const configs = {
+          user: {
+            // This should correspond to a unique id for the current user.
+            client_user_id: 'user-id',
+          },
+          client_name: 'Plaid Quickstart',
+          country_codes: PLAID_COUNTRY_CODES.split(','),
+          language: 'en',
+          access_token: "access-development-b34b4d04-b4e9-4bcc-8676-da9289990e98"
+        };
+        console.log('hello')
+        const createTokenResponse = await plaidClient.linkTokenCreate(configs);
+        // prettyPrintResponse(createTokenResponse);
+        response.json({ link_token: createTokenResponse.data.link_token });
+      } else {
         const configs = {
           user: {
             // This should correspond to a unique id for the current user.
@@ -45,8 +81,8 @@ async function generateLinkToken(request, response, next) {
         const createTokenResponse = await plaidClient.linkTokenCreate(configs);
         // prettyPrintResponse(createTokenResponse);
         response.json(createTokenResponse.data);
-      })
-      .catch(next);
+    }})
+    .catch(next);
 };
 
 // app.post('/api/set_access_token', function (request, response, next) {
@@ -92,8 +128,9 @@ async function exchangeForAccessToken(request, response, next) {
   };
 
 async function getTransactions(req, res, next) {
-  const accessToken = process.env.ACCESS_TOKEN;
-  // const accessToken = "access-sandbox-1521a18a-e3fe-43df-bca7-e901305ea874";
+  // const accessToken = process.env.ACCESS_TOKEN;
+  // move to different file:
+  const accessToken = "access-development-b34b4d04-b4e9-4bcc-8676-da9289990e98"
   const currentDateArray = new Date().toLocaleString().split(',')[0].split('/');
   const currentDate = [currentDateArray[2], `0${currentDateArray[0]}`, currentDateArray[1]].join('-');
   const thirtyDaysInMS = 1000 * 60 * 60 * 24 * 30;
@@ -130,8 +167,32 @@ async function getTransactions(req, res, next) {
     }
     res.json(transactions)
   } catch(err) {
-    console.error(err);
+    // if (err.response.data.error_code === 'ITEM_LOGIN_REQUIRED') {
+      // linkTokenUpdateMode;
+    // } else {
+      console.error(err);
+    // }
   }
+}
+
+async function linkTokenUpdateMode(request, response, next) {
+  Promise.resolve()
+  .then(async function () {
+    const configs = {
+      user: {
+        // This should correspond to a unique id for the current user.
+        client_user_id: 'user-id',
+      },
+      client_name: 'Plaid Quickstart',
+      country_codes: PLAID_COUNTRY_CODES.split(','),
+      language: 'en',
+      access_token: "access-development-b34b4d04-b4e9-4bcc-8676-da9289990e98"
+    };
+    const linkTokenResponse = await plaidClient.linkTokenCreate(configs);
+    // prettyPrintResponse(createTokenResponse);
+    response.json({ link_token: linkTokenResponse.data.link_token });
+  })
+  .catch(next);
 }
 
 module.exports = {

@@ -1,5 +1,5 @@
 import React, { ReactElement, useState, useEffect, useCallback } from 'react';
-import { generateLinkToken, exchangeForAccessToken } from '../utils/api';
+import { generateLinkToken, exchangeForAccessToken, reconnect } from '../utils/api';
 import { SetAccessTokenObj} from '../utils/types';
 
 import {
@@ -22,6 +22,13 @@ export default function TokenFunctions({ setAccessTokenObj }: SetAccessTokenObj)
           .catch((error) => console.error(error))
         return () => abortController.abort();
     }, [])
+
+    const handleReconnect = (event) => {
+      event.preventDefault();
+        reconnect()
+            .then(setLinkToken)
+            .catch(console.error);
+    }
 
     const PlaidLink: React.FC<{ token: string }> = ({ token }) => {
         
@@ -54,6 +61,9 @@ export default function TokenFunctions({ setAccessTokenObj }: SetAccessTokenObj)
             <>
               <button onClick={() => open()} disabled={!ready}>
                 Connect a bank account
+              </button>
+              <button onClick={handleReconnect}>
+                Reconnect Now!
               </button>
             </>
           );

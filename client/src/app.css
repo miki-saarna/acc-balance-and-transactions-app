@@ -1,0 +1,151 @@
+* {
+    /* change to 0. Add main, add margin to main. This allows nav bar to use margin: 0; */
+    margin: 0;
+    padding: 0;
+    font-family: 'SF Pro', 'Produc Sans', helvetica, sans-serif;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333333;
+    color: #f3f3f3;
+}
+
+header h1 {
+    margin-top: 10px;
+}
+
+nav {
+    width: 100vw;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    /* margin-left: 5%; */
+}
+
+nav li {
+    margin-right: 8%;
+}
+
+nav li a {
+    color: #f3f3f3;
+    display: inline-block;
+}
+
+nav li a:hover {
+    transform: scale(1.02);
+    transition-duration: .2s;
+}
+
+nav li:last-of-type {
+    margin-right: 0;
+}
+
+main {
+    margin: 10px;
+}
+
+button {
+    padding: 9px 15px;
+    border: none;
+    border-radius: 7px;
+    background-color: rgba(1, 1, 1, .8);
+    color: white;
+}
+
+button:hover {
+    background-color:  rgb(36, 204, 133);;
+    color: #f3f3f3;
+    transform: translateY(-1px);
+    transition-duration: .3s;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+table {
+    border-collapse: collapse;
+    width: auto;
+    min-width: 100%;
+    overflow-x: auto;
+    display: block;
+}
+
+.short-table {
+    display: table;
+}
+
+tr {
+    border: 1px solid rgb(220, 220, 220);
+}
+
+th, td {
+    border-right: 1px solid rgb(220, 220, 220);
+    padding: 10px 7px;
+}
+
+thead > tr, tr:nth-child(2n) {
+    /* adds alternating background-color pattern on table */
+    background-color: rgb(246, 248, 250);
+}
+
+th:last-of-type, td:last-of-type {
+    /* removes border on right-edge of table */
+    border-right: none;
+}
+
+@media only screen and (min-width: 768px) {
+    table {
+        margin: 40px auto 0;
+    }
+
+    .short-table {
+        min-width: 60%;
+        /* margin: 40px auto; */
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    header {
+        flex-direction: row;
+    }
+
+    header {
+        padding: 0 2%;
+    }
+
+    header h1 {
+        margin-top: 0;
+    }
+
+    nav ul {
+        justify-content: flex-end;
+        height: 70px;
+    }
+}
+
+@media only screen and (min-width: 1250px) {
+    main {
+        margin: 20px 70px;
+    }
+
+    table {
+        display: table;
+        margin: 40px auto;
+    }   
+}

@@ -4,6 +4,8 @@ const app = express();
 const cors = require('cors');
 const plaidAPIRouter = require('./plaidAPI/plaidAPI.router');
 const accessTokenRouter = require('./tokenStorage/accessToken.router');
+const notFound = require('./errors/notFound');
+const errorHandler = require('./errors/errorHandler');
 
 app.use(cors());
 // CORS API access approval to requesting domain below
@@ -20,5 +22,8 @@ app.use(express.json());
 
 app.use('/', plaidAPIRouter);
 app.use('/accessToken', accessTokenRouter);
+
+app.use(notFound);
+app.use(errorHandler);
 
 module.exports = app;

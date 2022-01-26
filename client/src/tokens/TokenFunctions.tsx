@@ -15,14 +15,11 @@ export default function TokenFunctions({ setAccessTokenObj }: SetAccessTokenObj)
     
     useEffect(() => {
       const abortController = new AbortController();
-        const generateLinkTokenAPI = async (): Promise<void> => {
-            await generateLinkToken(abortController.signal)
-              .then((token: string) => {
-                  setLinkToken(token);
-              })
-              .catch((error) => console.error(error))
-        }
-        generateLinkTokenAPI();
+        generateLinkToken(abortController.signal)
+          .then((token: string) => {
+              setLinkToken(token);
+          })
+          .catch((error) => console.error(error))
         return () => abortController.abort();
     }, [])
 

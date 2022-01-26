@@ -75,26 +75,22 @@ Please reach out for assitance if you are having trouble getting the server to p
 
 | API Path | Function |
 | -------- | -------- |
-| `/reservations` | GET: retrieve all reservations; POST: create a new reservation |
-| `/reservations?date=YYYY-MM-DD` | GET: retrieve reservations for a specified date |
-| `/reservations?mobile_number=XXX-XXX-XXXX` | GET: retrieve specific reservation containing a specified `mobile_number` |
-| `/reservations?reservation_id=X` | GET: retrieve specific reservation with `reservation_id` of `X` |
-| `/reservations/:reservationId` | GET: retrieve specific reservation corresponding to `reservation_id`; PUT: edit reservation with corresponding `reservation_id` |
-| `/reservations/:reservationId/status` | PUT: update the status of reservation corresponding to `reservation_id` |
-| `/tables` | GET: retrieve all tables; POST: create a new table |
-| `/tables/:table_id` | GET: retrieve specific table containing specified `table_id`; DELETE: delete specific table containing specified `table_id` |
-| `/tables/:table_id/seat` | PUT: update table upon seat assignment by assigning value of reservation_id; DELETE: update table after table is finished by clearing reservation_id |
-
-
+| `/link/token/create` | POST: create a link_token |
+| `/item/public_token/exchange` | POST: exchange a public_token for an access_token |
+| `/api/balance` | GET: retrieve accounts associated with linked bank account |
+| `/transactions/get` | GET: retrieve the last 30 days of transactions from accounts associated with linked bank account |
+| `/accessToken` | POST: create a new collection containing the access_token to the specified MongoDB database cluster |
+| `/accessToken/:id` | GET: retrieve the collection corresponding to the specified collection `id` |
+| `/accessToken/:id` | PATCH: update the collection corresponding to the specified collection `id` |
+| `/accessToken/:id` | DELETE: delete the collection corresponding to the specified collection `id` |
 
 ## Application Features
 
-The application contains a navigation menu containing 4 different pages:
+The application contains a navigation menu containing 3 different pages:
 
-- Dashboard
-- Search page
-- Create new reservation
-- Create new table
+- Home
+- Account Balances
+- View Transactions
 
 ![Dashboard of the restaurant reservation application](./images/dashboard.png)
 

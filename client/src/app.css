@@ -1,8 +1,38 @@
 * {
     /* change to 0. Add main, add margin to main. This allows nav bar to use margin: 0; */
-    margin: 10px;
+    margin: 0;
     padding: 0;
     font-family: 'SF Pro', 'Produc Sans', helvetica, sans-serif;
+}
+
+nav {
+    width: 100vw;
+    background-color: #333333;
+    
+}
+
+nav ul {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    height: 70px;
+    margin-left: 5%;
+}
+
+nav li {
+    margin-right: 8%;
+}
+
+nav li a {
+    color: #f3f3f3;
+}
+
+nav li:last-of-type {
+    margin-right: 0;
+}
+
+main {
+    margin: 40px;
 }
 
 .no-wrap {
@@ -20,6 +50,7 @@ a {
 table {
     border-collapse: collapse;
     min-width: 40%;
+    /* overflow-x: scroll; */
 }
 
 tr {

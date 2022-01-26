@@ -50,13 +50,13 @@ useEffect(() => {
 }, [accounts])
 
   return (
-    <>
+    <main>
       <Routes>
         <Route path='/' element={<TokenFunctions setAccessTokenObj={setAccessTokenObj} /> }/>
         <Route path='/balances' element={accounts.length ? <DisplayBalances accounts={accounts} /> : null}/>
         <Route path='/transactions' element={transactions.length ? <DisplayTransactions transactions={transactions} accounts={accounts} /> : null}/>
       </Routes>
-    </>
+    </main>
   );
 }
 

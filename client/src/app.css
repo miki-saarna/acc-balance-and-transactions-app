@@ -1,0 +1,43 @@
+* {
+    /* change to 0. Add main, add margin to main. This allows nav bar to use margin: 0; */
+    margin: 10px;
+    padding: 0;
+    font-family: 'SF Pro', 'Produc Sans', helvetica, sans-serif;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+table {
+    border-collapse: collapse;
+    min-width: 40%;
+}
+
+tr {
+    border: 1px solid rgb(220, 220, 220);
+}
+
+th, td {
+    border-right: 1px solid rgb(220, 220, 220);
+    padding: 10px 7px;
+}
+
+thead > tr, tr:nth-child(2n) {
+    /* adds alternating background-color pattern on table */
+    background-color: rgb(246, 248, 250);
+}
+
+th:last-of-type, td:last-of-type {
+    /* removes border on right-edge of table */
+    border-right: none;
+}
+

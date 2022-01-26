@@ -16,24 +16,27 @@ export default function TokenFunctions({ setAccessTokenObj }: SetAccessTokenObj)
     useEffect(() => {
       const abortController = new AbortController();
         const generateLinkTokenAPI = async (): Promise<void> => {
-            await generateLinkToken()
+            await generateLinkToken(abortController.signal)
               .then((token: string) => {
                   setLinkToken(token);
               });
         }
         generateLinkTokenAPI();
+        return () => abortController.abort();
     }, [])
 
     const PlaidLink: React.FC<{ token: string }> = ({ token }) => {
         
         const onSuccess = useCallback<PlaidLinkOnSuccess>(
             // const onSuccess = useCallback<PlaidLinkOnSuccess>(
-            async (public_token: string, metadata: PlaidLinkOnSuccessMetadata): Promise<void> => {
-                await exchangeForAccessToken(public_token)
+            async (public_token: string, metadata: PlaidLinkOnSuccessMetadata): Promise<() => void> => {
+              const abortController = new AbortController();
+                await exchangeForAccessToken(public_token, abortController.signal)
                   .then(async (accessTokenObj) => {
                     // console.log(access_token)
                       setAccessTokenObj(accessTokenObj);
                   })
+              return () => abortController.abort();
             }, []);
 
         const config: PlaidLinkOptions = {

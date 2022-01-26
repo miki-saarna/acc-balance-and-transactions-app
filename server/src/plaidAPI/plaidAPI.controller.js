@@ -1,5 +1,7 @@
 require("dotenv").config();
 const accessTokenController = require('../tokenStorage/accessToken.controller');
+const asyncErrorBoundary = require('../errors/asyncErrorBoundary');
+
 // const AccessToken = require('../mongoDB/accessTokenSchema');
 
 const {
@@ -133,8 +135,8 @@ async function getTransactions(req, res, next) {
 }
 
 module.exports = {
-    generateLinkToken,
-    exchangeForAccessToken,
-    getBalance,
-    getTransactions
+    generateLinkToken: asyncErrorBoundary(generateLinkToken),
+    exchangeForAccessToken: asyncErrorBoundary(exchangeForAccessToken),
+    getBalance: asyncErrorBoundary(getBalance),
+    getTransactions: asyncErrorBoundary(getTransactions),
 }

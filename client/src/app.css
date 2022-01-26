@@ -137,6 +137,14 @@ th:last-of-type, td:last-of-type {
         justify-content: flex-end;
         height: 70px;
     }
+
+    nav li {
+        margin-right: 45px;
+    }
+
+    nav li:last-of-type {
+        margin-right: 0;
+    }
 }
 
 @media only screen and (min-width: 1250px) {

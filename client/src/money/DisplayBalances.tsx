@@ -27,7 +27,7 @@ export default function DisplayBalances({ accounts }: { accounts: Account[] }): 
     })
 
     return (
-        <table>
+        <table className='short-table'>
           <thead>
             <tr>
               <th>

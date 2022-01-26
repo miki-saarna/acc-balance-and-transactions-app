@@ -24,13 +24,28 @@ function Routing(): ReactElement {
       } = accessTokenObj;
       // consider removing the additional file and just making API call here
       AccessTokenDB(access_token, item_id, abortController.signal);
+      // Promise.all([getBalance(abortController.signal), getTransactions(abortController.signal)])
+        // .then((response) => {
+          // setAccounts(response[0].accounts);
+          // setTransactions(response[1]);
+        // })
       getBalance(abortController.signal)
         .then(({ accounts }) => setAccounts(accounts));
-      getTransactions(abortController.signal)
-        .then(setTransactions)
+      // getTransactions(abortController.signal)
+      //   .then(setTransactions)
   }
   return () => abortController.abort();
 }, [accessTokenObj])
+
+// unsure why, but getTransactions function needs its own useEffect to successfully retrieve transactions
+useEffect(() => {
+  const abortController = new AbortController();
+  if (accounts.length) {
+    getTransactions(abortController.signal)
+      .then(setTransactions)
+  }
+  return () => abortController.abort();
+}, [accounts])
 
   return (
     <>

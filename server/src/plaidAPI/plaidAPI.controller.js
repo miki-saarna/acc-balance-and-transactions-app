@@ -100,16 +100,14 @@ async function getTransactions(req, res, next) {
   const request = {
     // const request: TransactionsGetRequest = {
     access_token: accessToken,
-    start_date: '2018-01-08',
+    start_date: '2018-01-01',
     end_date: '2020-02-01'
   };
-  console.log(accessToken)
   
   try {
     const response = await plaidClient.transactionsGet(request);
     let transactions = response.data.transactions;
     const total_transactions = response.data.total_transactions;
-    console.log(response)
     // Manipulate the offset parameter to paginate
     // transactions and retrieve all available data
     while (transactions.length < total_transactions) {

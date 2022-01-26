@@ -43,7 +43,7 @@ export default function DisplayTransactions({ transactions, accounts }: Prop): R
                 <tr key={transaction_id}>
                     <td>{accountFound ? accountFound.name : 'N/A'}</td>
                     <td>{date}</td>
-                    <td>{merchant_name}</td>
+                    <td>{merchant_name ? merchant_name : 'N/A'}</td>
                     <td>{name}</td>
                     <td>{category.join(', ')}</td>
                 <td>${amount.toFixed(2)}</td>

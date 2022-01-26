@@ -49,11 +49,6 @@ async function generateLinkToken(request, response, next) {
       .catch(next);
 };
 
-// is this the best method for passing the value of a variable? Cannot use res.locals...
-// let accessToken = 'access-sandbox-fe3ae64f-458c-4ab0-b08e-722f282318c4';
-// let accessToken = 'access-sandbox-63995ef0-cad8-40da-ae6c-a30f542a02f5';
-
-
 // app.post('/api/set_access_token', function (request, response, next) {
 async function exchangeForAccessToken(request, response, next) {
     // unsure where this comes from
@@ -102,8 +97,8 @@ async function getTransactions(req, res, next) {
   const request = {
     // const request: TransactionsGetRequest = {
     access_token: accessToken,
-    start_date: '2018-01-01',
-    end_date: '2020-02-01'
+    start_date: '2020-01-01',
+    end_date: '2020-12-01'
   };
   
   try {
@@ -116,8 +111,8 @@ async function getTransactions(req, res, next) {
       const paginatedRequest = {
         // const paginatedRequest: TransactionsGetRequest = {
         access_token: accessToken,
-        start_date: '2018-01-01',
-        end_date: '2020-02-01',
+        start_date: '2020-01-01',
+        end_date: '2020-12-01',
         options: {
           offset: transactions.length,
         },

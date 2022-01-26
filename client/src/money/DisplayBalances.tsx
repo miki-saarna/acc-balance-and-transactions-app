@@ -15,10 +15,10 @@ export default function DisplayBalances({ accounts }: { accounts: Account[] }): 
   //       setAccounts(accounts)
   //     })
   // }, []);
-  
+  // console.log(accounts.length)
   const listAccountsAndBalances: React.ReactNode[] = accounts.map(({ account_id, balances: { current }, name }: Account) => {
       return (
-        <li key={account_id}>{name}: ${(Math.round(current * 100) / 100).toFixed(2)} and {account_id}</li>
+        <li key={account_id}>{name}: ${(Math.round(current * 100) / 100).toFixed(2)}</li>
       )
     })
 

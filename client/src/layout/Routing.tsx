@@ -16,18 +16,21 @@ function Routing(): ReactElement {
 
   // saves access_token to database
   useEffect(() => {
+    const abortController = new AbortController();
     if (Object.entries(accessTokenObj).length) {
       const {
         access_token,
         item_id
       } = accessTokenObj;
-      AccessTokenDB(access_token, item_id);
-      getBalance()
+      // consider removing the additional file and just making API call here
+      AccessTokenDB(access_token, item_id, abortController.signal);
+      getBalance(abortController.signal)
         .then(({ accounts }) => setAccounts(accounts));
-      getTransactions()
-          .then(setTransactions)
-    }
-  }, [accessTokenObj])
+      getTransactions(abortController.signal)
+        .then(setTransactions)
+  }
+  return () => abortController.abort();
+}, [accessTokenObj])
 
   return (
     <>

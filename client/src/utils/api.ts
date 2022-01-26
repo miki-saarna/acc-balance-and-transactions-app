@@ -25,7 +25,7 @@ export const exchangeForAccessToken = async (public_token: string): Promise<Acce
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({public_token}),  
+        body: JSON.stringify({public_token}),
     })
     // console.log(JSON.stringify({data: public_token}))
     // what happens if await is removed?
@@ -33,7 +33,7 @@ export const exchangeForAccessToken = async (public_token: string): Promise<Acce
     return await response.json();
 }
 
-export const getBalance = async (): Promise<{accounts: Account[]}> => {
+export const getBalance = async (signal): Promise<{accounts: Account[]}> => {
     // export const getBalance = async (access_token: string) => {
     const url: any = new URL(`${API_BASE_URL}/api/balance`);
     const response = await fetch(url, {
@@ -41,11 +41,12 @@ export const getBalance = async (): Promise<{accounts: Account[]}> => {
         headers: {
             'Content-Type': 'application/json',
         },
+        signal
     })
     return await response.json();
 }
 
-export const storeAccessToken = async (access_token: string, item_id: string) => {
+export const storeAccessToken = async (access_token: string, item_id: string, signal) => {
     const url: any = new URL(`${API_BASE_URL}/accessToken`);
     const response = await fetch(url, {
         method: "POST",
@@ -55,18 +56,19 @@ export const storeAccessToken = async (access_token: string, item_id: string) =>
         body: JSON.stringify({
             access_token,
             item_id
-        })
+        }),
+        signal
     })
     return await response.json();
 }
 
-export const getTransactions = async (): Promise<Transaction[]> => {
-    // const url: string = `${API_BASE_URL}/transactions/get`
+export const getTransactions = async (signal): Promise<Transaction[]> => {
     const url: any = new URL(`${API_BASE_URL}/transactions/get`);
     const options = {
         method: "GET",
         headers,
-        body: null
+        body: null,
+        signal
     }
     const response = await fetch(url, options);
     return response.json();

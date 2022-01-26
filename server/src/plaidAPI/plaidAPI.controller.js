@@ -95,18 +95,21 @@ async function exchangeForAccessToken(request, response, next) {
   };
 
 async function getTransactions(req, res, next) {
-  const accessToken = process.env.ACCESS_TOKEN
+  const accessToken = process.env.ACCESS_TOKEN;
   // const accessToken = "access-sandbox-1521a18a-e3fe-43df-bca7-e901305ea874";
   const request = {
     // const request: TransactionsGetRequest = {
     access_token: accessToken,
-    start_date: '2018-01-01',
+    start_date: '2018-01-08',
     end_date: '2020-02-01'
   };
+  console.log(accessToken)
+  
   try {
     const response = await plaidClient.transactionsGet(request);
     let transactions = response.data.transactions;
     const total_transactions = response.data.total_transactions;
+    console.log(response)
     // Manipulate the offset parameter to paginate
     // transactions and retrieve all available data
     while (transactions.length < total_transactions) {
@@ -120,6 +123,7 @@ async function getTransactions(req, res, next) {
         },
       };
       const paginatedResponse = await plaidClient.transactionsGet(paginatedRequest);
+      // console.log(paginatedResponse)
       transactions = transactions.concat(
         paginatedResponse.data.transactions,
       );

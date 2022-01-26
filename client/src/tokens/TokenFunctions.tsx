@@ -14,6 +14,7 @@ export default function TokenFunctions({ setAccessTokenObj }: SetAccessTokenObj)
     const [linkToken, setLinkToken] = useState<string>('');
     
     useEffect(() => {
+      const abortController = new AbortController();
         const generateLinkTokenAPI = async (): Promise<void> => {
             await generateLinkToken()
               .then((token: string) => {

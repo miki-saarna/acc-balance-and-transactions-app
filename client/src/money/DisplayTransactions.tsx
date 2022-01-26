@@ -22,7 +22,7 @@ export default function DisplayTransactions({ transactions, accounts }: Prop): R
     //         .then(setTransactionsData)
     // }, []);
     
-    // const [transactionsRow, setTransactionsRow] = useState([]);
+
         const transactionsRows = transactions.map((transaction: Transaction) => {
             const {
                 account_id,
@@ -41,7 +41,7 @@ export default function DisplayTransactions({ transactions, accounts }: Prop): R
             
             return (
                 <tr key={transaction_id}>
-                    <td>{accountFound ? accountFound.name : null}</td>
+                    <td>{accountFound ? accountFound.name : 'N/A'}</td>
                     <td>{date}</td>
                     <td>{merchant_name}</td>
                     <td>{name}</td>

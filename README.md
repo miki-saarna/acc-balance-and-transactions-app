@@ -67,9 +67,11 @@ The Express CORS package is implemented for specified domains to access the back
     - Alter the value of `DATABASE_URL` with the connection URL to your MongoDB database cluster unless you wish to use a local database connection
 5. Run `cp ./client/.env.sample ./client/.env`
 6. The newly created `.env` file in the `./client` directory does not need to be editted, unless you wish to connect to the server at a location other than `http://localhost:5000`
-7. On line 12 of the `./server/src/app.js` file, alter the value(s) of the `allowedDomains` array to include the location(s) where you plan to run the client of the application
 8. Run `npm install` to install project dependencies
 9. Run `npm start` to start your client and server concurrently
+
+Other:
+- Reconfigure lines 12 - 20 of the `./server/src/app.js` file to use the CORS package. Alter the value(s) of the `allowedDomains` array to include the location(s) where you plan to run the client of the application
 
 Please reach out for assitance if you are having trouble getting the server to properly run.
 

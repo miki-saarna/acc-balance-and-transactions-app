@@ -96,7 +96,9 @@ The application contains a navigation menu containing 3 different pages:
 
 ![Search page](./images/home-page.png);
 
-The home page simply contains a button that will navigate the user to Plaid Quickstart, which is Plaid's own API that allows for safe and secure connection to use your bank institution's login credentials to access your accounts and transactions.
+The home page contains a button that will navigate the user to Plaid Quickstart, which is Plaid's own API that allows for safe and secure connection to use your bank institution's login credentials to access your accounts and transactions.
+
+Additionally, simple instructions are provided (not pictured above) that contain the bank institution login credentials for the sandbox environment.
 
 ---
 

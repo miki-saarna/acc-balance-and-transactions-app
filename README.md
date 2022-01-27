@@ -24,7 +24,7 @@ Both the client and server are hosted on [Vercel](https://vercel.com/) with the 
 
 This application is designed to become a transaction tracker and budgeting software to help users create financial goals. This application drew inspiration from [Mint's](https://mint.intuit.com/) budgeting and goal-setting features.
 
-Current features are limited to:
+Current features include:
 
 - Connecting your bank account
 - Viewing your account balances
@@ -134,7 +134,13 @@ You can learn more about Plaid Quickstart from their [documentation](https://pla
 
 ## Version 2.0
 
-Mention future improvements to application
+In addition to optimizing the current code base and updating some of the TypeScript type annotations, there are a number of updates planned for the near future to give this application more functionalities. These include:
+
+- Ability to create monthly budgets for different categories and track current progress for the current month
+- Add a pie/donut chart to the transactions page that displays each category of transactions represented by their portion of total transaction amount. This will allow users to easily visual spending patterns
+- User/login system that can save user's information instead of needing to input login credentials for institutions every time upon opening the application
+
+Feel free to reach out to me if there are any other features not listed that you would like to request to be added.
 
 ## License
 

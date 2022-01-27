@@ -38,7 +38,7 @@ This application's front-end is built on React and TypeScript and Vanilla CSS. A
 
 The application's back-end is built on Express.js and MongoDB servers utilizing RESTful APIs.
 
-The Express CORS package is implemented for specified domains to access the back-end API.
+The Express CORS package is implemented for specified domains to access the back-end API. The CORS package is commented out for installation simplicity, but is ready to be used by uncommenting a few lines of code (Detailed instructions within [Installation](#installation) section below)
 
 - Backend API setup
 - Creating RESTful APIs

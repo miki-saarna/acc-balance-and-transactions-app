@@ -14,9 +14,9 @@
 
 ## Live Application
 
-This application can be viewed here: [restaurant-reservation-application.vercel.app](restaurant-reservation-application.vercel.app)
+This application can be viewed here: [acc-balance-and-transactions-app.vercel.app](https://acc-balance-and-transactions-app.vercel.app)
 
-The backend API is currently running here: [restaurant-reservation-application-server.vercel.app](restaurant-reservation-application-server.vercel.app)
+The backend API is currently running here: [acc-balance-and-transactions-app-server.vercel.app](https://acc-balance-and-transactions-app-server.vercel.app)
 
 Both the client and server are hosted on [Vercel](https://vercel.com/) with the databases hosted by [MongoDB](https://www.mongodb.com)
 

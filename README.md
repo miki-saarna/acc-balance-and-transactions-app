@@ -1,4 +1,3 @@
-
 # Account Balance and Transactions App (Plaid API)
 
 ### Table of Contents
@@ -9,6 +8,7 @@
 - [How To Use](#how-to-use)
 - [API Paths](#api-paths)
 - [Application Features](#application-features)
+- [Version 2.0 (future upgrade)](#version-2.0)
 - [License](#license)
 - [Author Info](#author-info)
 
@@ -51,7 +51,7 @@ The Express CORS package is implemented for specified domains to access the back
 
 ## How To Use
 
-> Create a free Plaid account to have access to your own `PLAID_CLIENT_ID` and `PLAID_SECRET`s. 
+> Create a free Plaid account [here](https://dashboard.plaid.com/signup?email=&referrer_url=) to have access to your own `PLAID_CLIENT_ID` and `PLAID_SECRET`s. 
 
 ### Installation:
 
@@ -92,73 +92,47 @@ The application contains a navigation menu containing 3 different pages:
 - Account Balances
 - View Transactions
 
-![Dashboard of the restaurant reservation application](./images/dashboard.png)
-
 ### Home
 
-The dashboard contains all tables as well as all reservations of a specified date (defaulted to current date). Arrows buttons are available to view reservations of the following or previous day(s). Clicking the "Today" button will return the date to the current date. 
+![Search page](./images/home-page.png);
 
-Reservations may also contain buttons on seat assignment, editting, and cancellation. The seat button will direct the user to the seat assignment page. The edit button will direct the user to the edit reservation page. The cancel button allows the user to cancel the reservation and remove from view.
-
-Tables with a "Finished" button are currently occupied. Clicking the finish button will free the table and remove its corresponding reservation from view. Tables that are unoccupied contain an "x" button on the top right that will delete the table. An occupied table cannot be deleted until it is finished.
+The home page simply contains a button that will navigate the user to Plaid Quickstart, which is Plaid's own API that allows for safe and secure connection to use your bank institution's login credentials to access your accounts and transactions.
 
 ---
-
-![Search page](./images/search-page.png);
 
 ### Account Balances
 
-The search page allows the user to search for a reservation by phone number. Upon finding the correct reservation, the user can choose to seat the reservation, edit the reservation, or cancel it. Reservations that have already finished or have been cancelled will also be retrieved by this search. This feature creates an optimized and very efficient experience for the user when a customer calls in to alter or cancel their reservation.
+![Page that displays all accounts and their corresponding balances](./images/accounts-page.png)
+
+The account balances page contains all accounts associated with linked bank account that was used for Plaid Quickstart. The name of the account and its current balance is displayed.
 
 ---
 
-![Page with form to create a new reservation](./images/reservation-creation.png)
 
 ### View Transactions
 
-This page includes a form element with required inputs for the new reservation. Each submission also includes multiple validators on both the front-end and back-end to ensure a valid reservation is created.
+![Page that displays all transactions from the last 30 days](./images/transactions-page.png)
 
-![One of the validation errors on reservation submission](./images/reservation-creation-validation.png)
+The transactions page allows the user to view all transactions from the associated account from the last 30 days. The following information is included for each transaction:
 
-A successful submission will redirect the user to the `/dashboard?date=YYYY-MM-DD` page, which displays all reservations corresponding to the `reservation_date` of the reservation that was just created. The cancel button will return the user to the previous page.
+- Name of the account that the transaction belongs to
+- Date of transaction
+- Name of the merchant
+- Name of the transaction
+- Category data regarding the transaction
+- Amount of the transaction
 
----
+### Plaid Quickstart
 
-![Page that allow reservation to be editted](./images/edit-reservation.png)
+![Plaid's Quickstart API to connect to a bank account](./images/plaid-quickstart-login.png)
 
-## Edit Reservation
+Per instructions provided on the [Home](#home) page, the Plaid Quickstart API allows the user to input credentials of a sample account to be used for experimentation with the application and to test its functionality while using the sandbox environment. If a development environment is being used, real and authentic login credentials can be used to view the application with real-time data.
 
-Clicking the "Edit" button found on reservations leads the user to the edit reservation page. This page uses the exact same file as the Create Reservation page due to having many similaries). Any and all fields can be editted, but upon submission, front-end and back-end validation will check for validity of the updated reservation and provide submission errors if any. 
+You can learn more about Plaid Quickstart from their [documentation](https://plaid.com/docs/quickstart/).
 
-Just like the reservation creation page, upon submission, the user will be redirected to `/dashboard?date=YYYY-MM-DD` corresponding to the `reservation_date` of the editted reservation. The cancel button returns the user to the previous page.
+## Version 2.0
 
----
-
-![Page with form to create a new table](./images/table-creation.png)
-
-## Table Creation
-
-This page contains a form that allows the user to create a new table. Both front-end and back-end validation check to ensure that the table name and capacity contain valid inputs.
-
-![Validation error occuring upon submission of invalid table](./images/table-creation-validation.png)
-
-A successful submission directs the user to the dashboard page, defaulted to the present date. The cancel button will direct the user to the previous page.
-
----
-
-![Seat assignment page](./images/seat-assignment.png)
-
-## Seat Assignment
-
-Clicking the "Seat" button found on a "booked" reservation leads the user to the seat assignment page. A selector displays table options with each table's corresponding name followed by its capacity. Upon submission, both front-end and back-end validation check if the selected table's capacity can seat the reservation's size. 
-
-![Validation error occuring on seat assignment page](./images/seat-assignment-validation.png)
-
-The submit button directs the user to the dashboard, defaulted to the current date. The cancel button directs the user to the previous page.
-
-![Reservation assigned to table](./images/reservation-assigned-to-table.png)
-
-The status of a reservation changes to "seated" when it has been assigned to a table. The "Seat", "Edit", and "Cancel" buttons will no longer display on a seated reservation. The status of the corresponding table will change to "Occupied". A "Finish" button will now appear on the occupied table.
+Mention future improvements to application
 
 ## License
 
@@ -184,10 +158,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## Version 2.0
-
-Mention future improvements to application
-
 ## Author Info
 
 
@@ -195,4 +165,4 @@ Mention future improvements to application
 - LinkedIn: [Mikito Saarna](https://www.linkedin.com/in/mikito-saarna/)
 - Website: [MikiSaarna.com](https://MikiSaarna.com)
 
-[Back To The Top](#restaurant-reservation-application)
+[Back To The Top](#account-balance-and-transactions-app-(Plaid-API))

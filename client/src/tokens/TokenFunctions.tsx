@@ -1,6 +1,7 @@
 import React, { ReactElement, useState, useEffect, useCallback } from 'react';
 import { generateLinkToken, exchangeForAccessToken } from '../utils/api';
 import { SetAccessTokenObj} from '../utils/types';
+import Instructions from '../layout/Instructions';
 
 import {
     usePlaidLink,
@@ -55,6 +56,7 @@ export default function TokenFunctions({ setAccessTokenObj }: SetAccessTokenObj)
               <button onClick={() => open()} disabled={!ready}>
                 Connect a bank account
               </button>
+              <Instructions />
             </>
           );
     }

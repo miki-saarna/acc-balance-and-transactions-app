@@ -9,6 +9,18 @@
     white-space: nowrap;
 }
 
+.green-text {
+    color:  rgb(36, 204, 133);
+}
+
+ul {
+    margin-left: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
 header {
     display: flex;
     flex-direction: column;
@@ -30,6 +42,7 @@ nav ul {
     justify-content: center;
     align-items: center;
     height: 50px;
+    list-style-type: none;
     /* margin-left: 5%; */
 }
 
@@ -64,18 +77,24 @@ button {
 }
 
 button:hover {
-    background-color:  rgb(36, 204, 133);;
+    background-color:  rgb(36, 204, 133);
     color: #f3f3f3;
     transform: translateY(-1px);
     transition-duration: .3s;
 }
 
-ul {
-    list-style-type: none;
+.instructions {
+    /* border: 1px solid red; */
+    margin: 20px 0px 0 0;
 }
 
-a {
-    text-decoration: none;
+.instructions > h3, p, ul {
+    margin-bottom: 10px;
+}
+
+.instructions > p:last-of-type {
+    font-size: 13px;
+    font-weight: bold;
 }
 
 table {
@@ -110,6 +129,10 @@ th:last-of-type, td:last-of-type {
 }
 
 @media only screen and (min-width: 768px) {
+    main {
+        margin: 20px;
+    }
+
     table {
         margin: 40px auto 0;
     }

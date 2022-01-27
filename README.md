@@ -71,6 +71,7 @@ The Express CORS package is implemented for specified domains to access the back
 9. Run `npm start` to start your client and server concurrently
 
 Other:
+
 - Reconfigure lines 12 - 20 of the `./server/src/app.js` file to use the CORS package. Alter the value(s) of the `allowedDomains` array to include the location(s) where you plan to run the client of the application
 
 Please reach out for assitance if you are having trouble getting the server to properly run.
@@ -114,7 +115,6 @@ The account balances page contains all accounts associated with linked bank acco
 
 ---
 
-
 ### View Transactions
 
 ![Page that displays all transactions from the last 30 days](./images/transactions-page.png)
@@ -127,6 +127,8 @@ The transactions page allows the user to view all transactions from the associat
 - Name of the transaction
 - Category data regarding the transaction
 - Amount of the transaction
+
+---
 
 ### Plaid Quickstart
 
@@ -171,7 +173,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ## Author Info
-
 
 - GitHub: [miki-saarna](https://github.com/miki-saarna)
 - LinkedIn: [Mikito Saarna](https://www.linkedin.com/in/mikito-saarna/)

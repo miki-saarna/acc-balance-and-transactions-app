@@ -1,4 +1,4 @@
-# Account Balance and Transactions App (Plaid API)
+# Account Balance and Transactions App with Plaid API
 
 ### Table of Contents
 
@@ -8,7 +8,7 @@
 - [How To Use](#how-to-use)
 - [API Paths](#api-paths)
 - [Application Features](#application-features)
-- [Version 2.0 (future upgrade)](#version-2.0)
+- [Version 2.0 (future upgrade)](#version-20)
 - [License](#license)
 - [Author Info](#author-info)
 
@@ -18,7 +18,7 @@ This application can be viewed here: [restaurant-reservation-application.vercel.
 
 The backend API is currently running here: [restaurant-reservation-application-server.vercel.app](restaurant-reservation-application-server.vercel.app)
 
-Both the client and server are hosted on [Vercel](https://vercel.com/) with the SQL Databases hosted by [ElephantSQL](https://www.elephantsql.com/)
+Both the client and server are hosted on [Vercel](https://vercel.com/) with the databases hosted by [MongoDB](https://www.mongodb.com)
 
 ## Description
 
@@ -30,11 +30,11 @@ Current features include:
 - Viewing your account balances
 - Viewing transactions from the last 30 days
 
-> This application implements Plaid's API end points to connect to your bank account information. However, instructions are provided within the application to provide test login credentials to easily view the application's features.
+> This application implements Plaid's API end points to connect to your bank account information. However, sample login credentials are provided within the application's home page that allows users to easily view and use the application's features.
 
 ## Technologies
 
-This application's front-end is built on React and TypeScript and styling was added through Vanilla CSS. An API handles all promises necessary to interact with the back-end API database.
+This application's front-end is built on React and TypeScript and Vanilla CSS. An API handles all promises necessary to interact with the back-end API database.
 
 The application's back-end is built on Express.js and MongoDB servers utilizing RESTful APIs.
 
@@ -45,9 +45,11 @@ The Express CORS package is implemented for specified domains to access the back
 - Using Express for middleware request and response handling
 - Implementing MongoDB servers
 - Frontend built on React with React router and hooks
-- TypeScript implementing on the frontend
+- TypeScript implemented on the frontend
 - Express CORS package implemented
 - Project deployed on Vercel
+
+> The API calls to MongoDB servers are meant to assist in adopting a login system to this application, which will be built in the near future. Therefore, these API calls perform a frivolous task for the time-being.
 
 ## How To Use
 
@@ -94,7 +96,7 @@ The application contains a navigation menu containing 3 different pages:
 
 ### Home
 
-![Search page](./images/home-page.png);
+![Search page](./images/home-page.png)
 
 The home page contains a button that will navigate the user to Plaid Quickstart, which is Plaid's own API that allows for safe and secure connection to use your bank institution's login credentials to access your accounts and transactions.
 
@@ -173,4 +175,4 @@ SOFTWARE.
 - LinkedIn: [Mikito Saarna](https://www.linkedin.com/in/mikito-saarna/)
 - Website: [MikiSaarna.com](https://MikiSaarna.com)
 
-[Back To The Top](#account-balance-and-transactions-app-(Plaid-API))
+[Back To The Top](#account-balance-and-transactions-app-with-plaid-api)

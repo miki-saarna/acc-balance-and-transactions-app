@@ -12,12 +12,13 @@ app.use(cors());
 app.use(function(req, res, next) {
   const allowedDomains = ["http://localhost:3000", "https://acc-balance-and-transactions-app.vercel.app"];
   const origin = req.headers.origin;
-  if (allowedDomains.includes(origin)) {
-    res.header("Access-Control-Allow-Origin", origin);
+  if (!allowedDomains.includes(origin)) {
+    next({ status: 400, message: `Access to fetch at from origin ${origin} has been blocked by CORS policy.` })
   }
-    // res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Origin", origin);
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
+  // res.header("Access-Control-Allow-Origin", "*");
 });
 app.use(express.json());
 

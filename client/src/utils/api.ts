@@ -60,6 +60,8 @@ export const storeAccessToken = async (access_token: string, item_id: string, si
         }),
         signal
     })
+    console.log('world')
+    // console.log(await response.json())
     return await response.json();
 }
 

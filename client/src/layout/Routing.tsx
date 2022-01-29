@@ -23,20 +23,22 @@ function Routing(): ReactElement {
         item_id
       } = accessTokenObj;
       // consider removing the additional file and just making API call here
-      // AccessTokenDB(access_token, item_id, abortController.signal);
-
+      // AccessTokenDB(access_token, item_id, abortController.signal)
+        
       Promise.all([getBalance(abortController.signal), getTransactions(abortController.signal)])
         .then((response) => {
           setAccounts(response[0].accounts);
           setTransactions(response[1]);
         })
+        .catch((error) => console.error(error))
+        
+        
 
       // getBalance(abortController.signal)
       //   .then(({ accounts }) => {
       //     console.log(accounts)
       //     setAccounts(accounts)
       //   })
-        .catch((error) => console.error(error))
       // getTransactions(abortController.signal)
       //   .then(setTransactions)
   }

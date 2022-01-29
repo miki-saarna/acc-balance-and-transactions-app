@@ -99,7 +99,7 @@ The application contains a navigation menu containing 3 different pages:
 
 ### Home
 
-![Search page](./images/home-page.png)
+![Search page](./docs/images/home-page.png)
 
 The home page contains a button that will navigate the user to Plaid Quickstart, which is Plaid's own API that allows for safe and secure connection to use your bank institution's login credentials to access your accounts and transactions.
 
@@ -109,7 +109,7 @@ Additionally, simple instructions are provided (not pictured above) that contain
 
 ### Account Balances
 
-![Page that displays all accounts and their corresponding balances](./images/accounts-page.png)
+![Page that displays all accounts and their corresponding balances](./docs/images/accounts-page.png)
 
 The account balances page contains all accounts associated with linked bank account that was used for Plaid Quickstart. The name of the account and its current balance is displayed.
 
@@ -117,7 +117,7 @@ The account balances page contains all accounts associated with linked bank acco
 
 ### View Transactions
 
-![Page that displays all transactions from the last 30 days](./images/transactions-page.png)
+![Page that displays all transactions from the last 30 days](./docs/images/transactions-page.png)
 
 The transactions page allows the user to view all transactions from the associated account from the last 30 days. The following information is included for each transaction:
 
@@ -132,7 +132,7 @@ The transactions page allows the user to view all transactions from the associat
 
 ### Plaid Quickstart
 
-![Plaid's Quickstart API to connect to a bank account](./images/plaid-quickstart-login.png)
+![Plaid's Quickstart API to connect to a bank account](./docs/images/plaid-quickstart-login.png)
 
 Per instructions provided on the [Home](#home) page, the Plaid Quickstart API allows the user to input credentials of a sample account to be used for experimentation with the application and to test its functionality while using the sandbox environment. If a development environment is being used, real and authentic login credentials can be used to view the application with real-time data.
 

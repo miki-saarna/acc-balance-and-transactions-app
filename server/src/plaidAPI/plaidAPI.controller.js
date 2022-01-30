@@ -1,6 +1,7 @@
 require("dotenv").config();
 const accessTokenController = require('../tokenStorage/accessToken.controller');
 const asyncErrorBoundary = require('../errors/asyncErrorBoundary');
+const getLastThirtyDaysDates = require('../utils/getThirtyDays');
 
 // const AccessToken = require('../mongoDB/accessTokenSchema');
 
@@ -30,6 +31,8 @@ const configuration = new Configuration({
 const plaidClient = new PlaidApi(configuration);
 
 async function generateLinkToken(request, response, next) {
+    const { timezoneOffset } = request.body;
+    process.env.TIMEZONE_OFFSET = timezoneOffset;
     Promise.resolve()
       .then(async function () {
         const configs = {
@@ -92,16 +95,11 @@ async function exchangeForAccessToken(request, response, next) {
   };
 
 async function getTransactions(req, res, next) {
-  // move timezone adjustment to own file or use Moment package:
   const accessToken = process.env.ACCESS_TOKEN;
-  const currentDateArray = new Date().toLocaleString().split(',')[0].split('/');
-  const currentDate = [currentDateArray[2], `0${currentDateArray[0]}`, currentDateArray[1]].join('-');
-  const thirtyDaysInMS = 1000 * 60 * 60 * 24 * 30;
-  const thirtyDaysAgoDateArray = new Date(Date.now() - thirtyDaysInMS).toLocaleString().split(',')[0].split('/');
-  const thirtyDaysAgoDate = [thirtyDaysAgoDateArray[2], thirtyDaysAgoDateArray[0], thirtyDaysAgoDateArray[1]].join('-');
-
+  // using separate function/file to get correct dates for today and 30 days ago
+  const { currentDate, thirtyDaysAgoDate } = getLastThirtyDaysDates(process.env.TIMEZONE_OFFSET);
+  // const request: TransactionsGetRequest = {
   const request = {
-    // const request: TransactionsGetRequest = {
     access_token: accessToken,
     start_date: thirtyDaysAgoDate,
     end_date: currentDate

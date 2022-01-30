@@ -14,7 +14,6 @@ function Routing(): ReactElement {
   const [accounts, setAccounts] = useState<[] | Account[]>([]);
   const [transactions, setTransactions] = useState<[] | Transaction[]>([]);
 
-
   // saves access_token to database
   useEffect(() => {
     const abortController = new AbortController();
@@ -24,27 +23,15 @@ function Routing(): ReactElement {
         access_token,
         item_id
       } = accessTokenObj;
-
-      // const start = window.performance.now();
-      // AccessTokenDB(access_token, item_id, abortController.signal)
       
       storeAccessToken(access_token, item_id, abortController.signal)
+
+      Promise.all([getBalance(abortController.signal), getTransactions(abortController.signal)])
         .then((response) => {
-          console.log(response)
-          console.log('did it!')
+          setAccounts(response[0].accounts);
+          setTransactions(response[1]);
         })
-        
-          // console.log(window.performance.now() - start);
-        // })
-        // console.log(window.performance.now() - start);
-
-      // Promise.all([getBalance(abortController.signal), getTransactions(abortController.signal)])
-      //   .then((response) => {
-      //     setAccounts(response[0].accounts);
-      //     setTransactions(response[1]);
-      //   })
         .catch((error) => console.error(error))
-
   }
 
   return () => abortController.abort();

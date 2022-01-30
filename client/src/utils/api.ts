@@ -4,12 +4,14 @@ const headers = new Headers();
 headers.append("Content-Type", "application/json");
 
 export const generateLinkToken = async (signal): Promise<string> => {
-    
+    // deployed Vercel application cannot properly calculate timezone offset from server
+    const timezoneOffset = new Date().getTimezoneOffset() * 60000;
     const url: any = new URL(`${API_BASE_URL}/link/token/create`);
     // const url = new URL(`${API_BASE_URL}/api/create_link_token`);
     const response = await fetch(url, {
         method: "POST",
         headers,
+        body: JSON.stringify({ timezoneOffset }),
         signal
     });
     const { link_token: linkToken } = await response.json();

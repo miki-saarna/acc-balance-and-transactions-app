@@ -4,15 +4,16 @@ import TokenFunctions from '../tokens/TokenFunctions';
 import AccessTokenDB from '../tokens/AccessTokenDB';
 import DisplayBalances from '../money/DisplayBalances';
 import DisplayTransactions from '../money/DisplayTransactions';
-import { getBalance, getTransactions } from '../utils/api';
+import { getBalance, getTransactions, storeAccessToken } from '../utils/api';
 import { AccessTokenObj, Account, Transaction } from '../utils/types';
+
 
 // function Routes() {
 function Routing(): ReactElement {
-
   const [accessTokenObj, setAccessTokenObj] = useState<AccessTokenObj>({} as AccessTokenObj);
   const [accounts, setAccounts] = useState<[] | Account[]>([]);
   const [transactions, setTransactions] = useState<[] | Transaction[]>([]);
+
 
   // saves access_token to database
   useEffect(() => {
@@ -24,13 +25,24 @@ function Routing(): ReactElement {
         item_id
       } = accessTokenObj;
 
+      // const start = window.performance.now();
       // AccessTokenDB(access_token, item_id, abortController.signal)
-        
-      Promise.all([getBalance(abortController.signal), getTransactions(abortController.signal)])
+      
+      storeAccessToken(access_token, item_id, abortController.signal)
         .then((response) => {
-          setAccounts(response[0].accounts);
-          setTransactions(response[1]);
+          console.log(response)
+          console.log('did it!')
         })
+        
+          // console.log(window.performance.now() - start);
+        // })
+        // console.log(window.performance.now() - start);
+
+      // Promise.all([getBalance(abortController.signal), getTransactions(abortController.signal)])
+      //   .then((response) => {
+      //     setAccounts(response[0].accounts);
+      //     setTransactions(response[1]);
+      //   })
         .catch((error) => console.error(error))
 
   }

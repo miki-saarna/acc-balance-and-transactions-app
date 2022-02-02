@@ -115,8 +115,8 @@ async function getTransactions(req, res, next) {
       const paginatedRequest = {
         // const paginatedRequest: TransactionsGetRequest = {
         access_token: accessToken,
-        start_date: '2020-01-01',
-        end_date: '2020-12-01',
+        start_date: thirtyDaysAgoDate,
+        end_date: currentDate,
         options: {
           offset: transactions.length,
         },

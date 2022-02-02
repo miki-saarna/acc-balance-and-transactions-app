@@ -8,6 +8,8 @@ import {
     PlaidLinkOptions,
     PlaidLinkOnSuccess,
     PlaidLinkOnSuccessMetadata,
+    PlaidLinkError,
+    PlaidLinkOnExitMetadata
 } from 'react-plaid-link';
 
 
@@ -32,15 +34,32 @@ export default function TokenFunctions({ setAccessTokenObj }: SetAccessTokenObj)
               const abortController = new AbortController();
                 await exchangeForAccessToken(public_token, abortController.signal)
                   .then(async (accessTokenObj) => {
-                    // console.log(access_token)
-                      setAccessTokenObj(accessTokenObj);
+                    console.log(accessTokenObj)
+                    setAccessTokenObj(accessTokenObj);
                   })
                   .catch((error) => console.error(error))
               return () => abortController.abort();
             }, []);
 
+        // const onExit = async (
+        //   error: PlaidLinkError | null,
+        //   metadata: PlaidLinkOnExitMetadata
+        // ) => {
+        //   // log and save error and metatdata
+        //   logExit(error, metadata, props.userId);
+        //   if (error != null && error.error_code === 'INVALID_LINK_TOKEN') {
+        //     await generateLinkToken(props.userId, props.itemId);
+        //   }
+        //   if (error != null) {
+        //     setError(error.error_code, error.display_message || error.error_message);
+        //   }
+        //   // to handle other error codes, see https://plaid.com/docs/errors/
+        // };
+          
+
         const config: PlaidLinkOptions = {
             onSuccess,
+            // onExit,
             onExit: (err, metadata) => {},
             onEvent: (eventName, metadata) => {},
             // token: 'GENERATED_LINK_TOKEN',

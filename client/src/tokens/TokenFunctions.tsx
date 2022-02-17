@@ -69,9 +69,10 @@ export default function TokenFunctions({ setAccessTokenObj }: SetAccessTokenObj)
           };
       
           const { open, ready, error } = usePlaidLink(config);
-      
+          
           return (
             <>
+              {/* refresh page if disabled */}
               <button onClick={() => open()} disabled={!ready}>
                 Connect a bank account
               </button>

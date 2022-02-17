@@ -29,17 +29,30 @@ function Routing(): ReactElement {
 
       Promise.all([getBalance(abortController.signal), getTransactions(abortController.signal)])
       // getBalance(abortController.signal)
+      // getTransactions(abortController.signal)
         .then((response) => {
           console.log(response)
-          // setAccounts(response.accounts);
           setAccounts(response[0].accounts);
           setTransactions(response[1]);
+          // setAccounts(response.accounts);
+          // setTransactions(response);
         })
         .catch((error) => console.error(error))
   }
 
   return () => abortController.abort();
 }, [accessTokenObj])
+
+// useEffect(() => {
+//   const abortController = new AbortController();
+//   if (accounts.length) {
+//     getTransactions(abortController.signal)
+//       .then((response) => {
+//         setTransactions(response)
+//       })
+//   }
+//   return () => abortController.abort();
+// }, [accounts])
 
   return (
     <main>

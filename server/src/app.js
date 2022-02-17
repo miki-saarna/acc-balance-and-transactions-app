@@ -16,7 +16,8 @@ app.use(function(req, res, next) {
   //   next({ status: 400, message: `Access to fetch at from origin ${origin} has been blocked by CORS policy.` })
   // }
   // res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-  res.header("Access-Control-Allow-Origin", "https://acc-balance-and-transactions-application.vercel.app");
+  // res.header("Access-Control-Allow-Origin", "https://acc-balance-and-transactions-application.vercel.app");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });

@@ -50,6 +50,7 @@ export const getBalance = async (signal): Promise<{accounts: Account[]}> => {
 }
 
 export const storeAccessToken = async (access_token: string, item_id: string, signal) => {
+    // console.log(access_token);
     const url: any = new URL(`${API_BASE_URL}/accessToken`);
     const response = await fetch(url, {
         method: "POST",

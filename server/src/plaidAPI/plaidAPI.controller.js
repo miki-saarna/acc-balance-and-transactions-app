@@ -81,17 +81,30 @@ async function exchangeForAccessToken(request, response, next) {
       .catch(next);
   };
 
+  // async function getBalance(request, response, next) {
+  //   const accessToken = process.env.ACCESS_TOKEN;
+  //   Promise.resolve()
+  //     .then(async function () {
+  //       const balanceResponse = await plaidClient.accountsBalanceGet({
+  //         access_token: accessToken,
+  //       });
+  //       // prettyPrintResponse(balanceResponse);
+  //       response.json(balanceResponse.data);
+  //     })
+  //     .catch(next);
+  // };
+
   async function getBalance(request, response, next) {
-    const accessToken = process.env.ACCESS_TOKEN
-    Promise.resolve()
-      .then(async function () {
+    const accessToken = process.env.ACCESS_TOKEN;
+      try {
         const balanceResponse = await plaidClient.accountsBalanceGet({
           access_token: accessToken,
         });
         // prettyPrintResponse(balanceResponse);
         response.json(balanceResponse.data);
-      })
-      .catch(next);
+      } catch (error) {
+        next(error)
+      }
   };
 
 async function getTransactions(req, res, next) {

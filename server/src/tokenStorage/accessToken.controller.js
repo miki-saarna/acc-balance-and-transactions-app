@@ -30,7 +30,9 @@ async function create(req, res) {
         access_token,
         item_id
     } = req.body;
-    const token = new AccessToken({
+    
+    // unsure if await is required here
+    const token = await new AccessToken({
         access_token: access_token,
         item_id: item_id
     })

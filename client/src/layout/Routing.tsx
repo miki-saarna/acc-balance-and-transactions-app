@@ -19,6 +19,7 @@ function Routing(): ReactElement {
     const abortController = new AbortController();
 
     if (Object.entries(accessTokenObj).length) {
+      console.log(accessTokenObj);
       const {
         access_token,
         item_id
@@ -27,7 +28,10 @@ function Routing(): ReactElement {
       storeAccessToken(access_token, item_id, abortController.signal)
 
       Promise.all([getBalance(abortController.signal), getTransactions(abortController.signal)])
+      // getBalance(abortController.signal)
         .then((response) => {
+          console.log(response)
+          // setAccounts(response.accounts);
           setAccounts(response[0].accounts);
           setTransactions(response[1]);
         })

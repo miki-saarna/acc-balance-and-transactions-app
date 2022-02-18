@@ -122,6 +122,5 @@ async function getTransactions(req, res, next) {
 module.exports = {
     generateLinkToken: asyncErrorBoundary(generateLinkToken),
     exchangeForAccessToken: asyncErrorBoundary(exchangeForAccessToken),
-    getBalance: asyncErrorBoundary(getBalance),
     getTransactions: asyncErrorBoundary(getTransactions),
 }

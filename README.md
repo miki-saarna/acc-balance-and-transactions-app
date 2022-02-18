@@ -37,7 +37,7 @@ Current features include:
 
 ## Technologies
 
-This application's front-end is built on React and TypeScript and Vanilla CSS. An API handles all promises necessary to interact with the back-end API database.
+This application's front-end is built on React and TypeScript, jQuery and Vanilla CSS. An API handles all promises necessary to interact with the back-end API database.
 
 The application's back-end is built on Express.js and MongoDB servers utilizing RESTful APIs.
 
@@ -48,6 +48,7 @@ The Express CORS package is implemented for specified domains to access the back
 - Using Express for middleware request and response handling
 - Implementing MongoDB servers
 - Frontend built on React with React router and hooks
+- jQuery implemented on frontend for some features
 - TypeScript implemented on the frontend
 - Express CORS package implemented
 - Project deployed on Vercel

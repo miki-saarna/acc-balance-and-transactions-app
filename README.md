@@ -1,5 +1,7 @@
 # Account Balance and Transactions App with Plaid API
 
+## Note: the account balances feature of this application is currently under maintenance and is, therefore, unavailable. I am working diligently to return this feature as soon as possible. 
+
 ### Table of Contents
 
 - [Live Application](#live-application)

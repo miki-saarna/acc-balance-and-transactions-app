@@ -101,7 +101,7 @@ async function exchangeForAccessToken(request, response, next) {
           access_token: accessToken,
         });
         // prettyPrintResponse(balanceResponse);
-        response.json(balanceResponse.data);
+        await response.json(balanceResponse.data);
       } catch (error) {
         next(error)
       }
@@ -139,7 +139,7 @@ async function getTransactions(req, res, next) {
         paginatedResponse.data.transactions,
       );
     }
-    res.json(transactions)
+    await res.json(transactions)
   } catch(err) {
     console.error(err);
   }

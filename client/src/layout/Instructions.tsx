@@ -11,8 +11,8 @@ export default function Instructions(): ReactElement {
                 <li>Email address: <span className='green-text'>"user_good"</span></li>
                 <li>Password: <span className='green-text'>"pass_good"</span></li>
             </ul>
-            <p>After successful login, API calls will be made automatically to retrieve the bank accounts and transactions. It may take about 5-10 seconds until the accounts and transactions pages populate with data.</p>
-            <p>*Refer to instructions within the GitHub repository's README file to implement a development environment and use real login credentials and real account and transaction data.</p>
+            <p>After successful login, API calls will be made automatically to retrieve the transactions. It may take about 5 seconds until the transactions page populates with data.</p>
+            <p>*Refer to instructions within the GitHub repository's README file to implement a development environment and use real login credentials and real transaction data.</p>
         </div>
     )
 }

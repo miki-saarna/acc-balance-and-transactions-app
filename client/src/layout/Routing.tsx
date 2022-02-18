@@ -27,15 +27,10 @@ function Routing(): ReactElement {
       
       storeAccessToken(access_token, item_id, abortController.signal)
 
-      Promise.all([getBalance(abortController.signal), getTransactions(abortController.signal)])
-      // getBalance(abortController.signal)
-      // getTransactions(abortController.signal)
+      getTransactions(abortController.signal)
         .then((response) => {
           console.log(response)
-          setAccounts(response[0].accounts);
-          setTransactions(response[1]);
-          // setAccounts(response.accounts);
-          // setTransactions(response);
+          setTransactions(response);
         })
         .catch((error) => console.error(error))
   }
@@ -43,22 +38,10 @@ function Routing(): ReactElement {
   return () => abortController.abort();
 }, [accessTokenObj])
 
-// useEffect(() => {
-//   const abortController = new AbortController();
-//   if (accounts.length) {
-//     getTransactions(abortController.signal)
-//       .then((response) => {
-//         setTransactions(response)
-//       })
-//   }
-//   return () => abortController.abort();
-// }, [accounts])
-
   return (
     <main>
       <Routes>
         <Route path='/' element={<TokenFunctions setAccessTokenObj={setAccessTokenObj} /> }/>
-        <Route path='/balances' element={accounts.length ? <DisplayBalances accounts={accounts} /> : null}/>
         <Route path='/transactions' element={transactions.length ? <DisplayTransactions transactions={transactions} accounts={accounts} /> : null}/>
       </Routes>
     </main>

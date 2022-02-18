@@ -13,11 +13,6 @@ export default function Menu(): ReactElement {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/balances">
-                      Account Balances
-                    </Link>
-                  </li>
-                  <li>
                     <Link to="/transactions">
                       View Transactions
                     </Link>

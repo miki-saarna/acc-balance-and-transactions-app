@@ -2,6 +2,7 @@ import React, { ReactElement, useState, useEffect, useCallback } from 'react';
 import { generateLinkToken, exchangeForAccessToken } from '../utils/api';
 import { SetAccessTokenObj} from '../utils/types';
 import Instructions from '../layout/Instructions';
+import * as $ from 'jquery';
 
 import {
     usePlaidLink,
@@ -69,11 +70,16 @@ export default function TokenFunctions({ setAccessTokenObj }: SetAccessTokenObj)
           };
       
           const { open, ready, error } = usePlaidLink(config);
-          
+
+          // reload page if button is disabled because usePlaidLink is not ready
+          if ($('button').disable) {
+            console.log('Button disabled. Reloading page...')
+            window.location.reload();
+          }
+
           return (
             <>
-              {/* refresh page if disabled */}
-              <button onClick={() => open()} disabled={!ready}>
+              <button id='follow' type='button' onClick={() => open()} disabled={!ready}>
                 Connect a bank account
               </button>
               <Instructions />

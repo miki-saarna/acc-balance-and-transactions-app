@@ -1,6 +1,6 @@
-# Account Balance and Transactions App with Plaid API
+# Recent Transactions App with Plaid API
 
-## Note: the account balances feature of this application is currently under maintenance and is, therefore, unavailable. I am working diligently to return this feature as soon as possible. 
+### Note: the account balances feature of this application is currently under maintenance and is, therefore, unavailable. I am working diligently to return this feature as soon as possible. 
 
 ### Table of Contents
 
@@ -29,7 +29,6 @@ This application is designed to become a transaction tracker and budgeting softw
 Current features include:
 
 - Connecting your bank account
-- Viewing your account balances
 - Viewing transactions from the last 30 days
 
 > This application implements Plaid's API end points to connect to your bank account information. However, sample login credentials are provided within the application's home page that allows users to easily view and use the application's features.
@@ -84,7 +83,6 @@ Please reach out for assitance if you are having trouble getting the server to p
 | -------- | -------- |
 | `/link/token/create` | POST: create a link_token |
 | `/item/public_token/exchange` | POST: exchange a public_token for an access_token |
-| `/api/balance` | GET: retrieve accounts associated with linked bank account |
 | `/transactions/get` | GET: retrieve the last 30 days of transactions from accounts associated with linked bank account |
 | `/accessToken` | POST: create a new collection containing the access_token to the specified MongoDB database cluster |
 | `/accessToken/:id` | GET: retrieve the collection corresponding to the specified collection `id` |
@@ -93,10 +91,9 @@ Please reach out for assitance if you are having trouble getting the server to p
 
 ## Application Features
 
-The application contains a navigation menu containing 3 different pages:
+The application contains a navigation menu containing 2 different pages:
 
 - Home
-- Account Balances
 - View Transactions
 
 ### Home
@@ -106,14 +103,6 @@ The application contains a navigation menu containing 3 different pages:
 The home page contains a button that will navigate the user to Plaid Quickstart, which is Plaid's own API that allows for safe and secure connection to use your bank institution's login credentials to access your accounts and transactions.
 
 Additionally, simple instructions are provided (not pictured above) that contain the bank institution login credentials for the sandbox environment.
-
----
-
-### Account Balances
-
-![Page that displays all accounts and their corresponding balances](./docs/images/accounts-page.png)
-
-The account balances page contains all accounts associated with linked bank account that was used for Plaid Quickstart. The name of the account and its current balance is displayed.
 
 ---
 
@@ -180,4 +169,4 @@ SOFTWARE.
 - LinkedIn: [Mikito Saarna](https://www.linkedin.com/in/mikito-saarna/)
 - Website: [MikiSaarna.com](https://MikiSaarna.com)
 
-[Back To The Top](#account-balance-and-transactions-app-with-plaid-api)
+[Back To The Top](#recent-transactions-app-with-plaid-api)

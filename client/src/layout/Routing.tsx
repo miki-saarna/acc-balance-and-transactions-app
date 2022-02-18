@@ -4,7 +4,7 @@ import TokenFunctions from '../tokens/TokenFunctions';
 import AccessTokenDB from '../tokens/AccessTokenDB';
 import DisplayBalances from '../money/DisplayBalances';
 import DisplayTransactions from '../money/DisplayTransactions';
-import { getBalance, getTransactions, storeAccessToken } from '../utils/api';
+import { getTransactions, storeAccessToken } from '../utils/api';
 import { AccessTokenObj, Account, Transaction } from '../utils/types';
 
 

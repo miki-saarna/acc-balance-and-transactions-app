@@ -36,19 +36,6 @@ export const exchangeForAccessToken = async (public_token: string, signal): Prom
     return await response.json();
 }
 
-export const getBalance = async (signal): Promise<{accounts: Account[]}> => {
-    // export const getBalance = async (access_token: string) => {
-    const url: any = new URL(`${API_BASE_URL}/api/balance`);
-    const response = await fetch(url, {
-        method: "GET",
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        signal
-    })
-    return await response.json();
-}
-
 export const storeAccessToken = async (access_token: string, item_id: string, signal) => {
     // console.log(access_token);
     const url: any = new URL(`${API_BASE_URL}/accessToken`);
